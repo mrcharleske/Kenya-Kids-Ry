@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Kenya Kids Ry</title>
+  <meta name="description" content="Learn more about Kenya Kids Ry, founded by Katja Maria in 2012. Discover our story, mission, and how we transform the lives of children from slums into responsible citizens.">
+  <meta name="keywords" content="Kenya Kids Ry, Katja Maria, Kenya charity, children education, slum rescue, mentorship, child support Kenya">
+  <meta name="author" content="Kenya Kids Ry">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: green;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .side-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      animation: dropDown 0.3s ease;
+    }
+
+    .side-menu a {
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+      text-decoration: none;
+      color: black;
+    }
+
+    .side-menu .close-btn {
+      font-size: 22px;
+      cursor: pointer;
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
+    @keyframes dropDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: url('images/about_kidsry.jpg') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    .hero-content {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 700px;
+    }
+
+    .hero-content h1 {
+      font-size: 36px;
+    }
+
+    /* About Section */
+    .about {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .about img {
+      width: 220px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .about h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: darkgreen;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Organization Section */
+    .organization {
+      padding: 80px 20px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+
+    .organization h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: darkgreen;
+    }
+
+    .organization p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer a {
+      color: lightgreen;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .menu-toggle { display: block; }
+      .hero-content h1 { font-size: 26px; }
+      .about p, .organization p { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Kenya Kids Ry</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="success.html">Success Stories</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="side-menu" id="sideMenu">
+    <div class="close-btn" onclick="toggleMenu()">✖</div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="success.html">Success Stories</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>About Kenya Kids Ry</h1>
+    </div>
+  </section>
+
+  <!-- About Katja -->
+  <section class="about">
+    <img src="images/about_katja.jpg" alt="Katja Maria - Founder of Kenya Kids Ry">
+    <h2>Meet Katja Maria</h2>
+    <p>Kenya Kids Ry was founded in 2012 by Katja Maria, driven by a passion to transform the lives of children in Kenya. Katja was deeply moved by the struggles of children living in slums and chose to provide them with education, safe homes, and mentorship for a brighter future.</p>
+  </section>
+
+  <!-- About Kenya Kids Ry -->
+  <section class="organization">
+    <h2>Our Journey</h2>
+    <p>Since 2012, Kenya Kids Ry has supported children in moving from life in slums to safer environments and better opportunities. Many have completed their basic education, while others are already working and living as responsible citizens of Kenya. Our mission remains simple: to give every child a chance to succeed.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2012 - 2025 Kenya Kids Ry. All Rights Reserved.</p>
+    <p>
+      <a href="index.html">Home</a> | 
+      <a href="about.html">About</a> | 
+      <a href="success.html">Success Stories</a> | 
+      <a href="contact.html">Contact</a>
+    </p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+    }
+  </script>
+</body>
+</html>
