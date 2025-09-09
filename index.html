@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenya Kids Ry - Transforming Lives Since 2012</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Kenya Kids Ry, founded by Katja Maria in 2012, helps children from slums find better homes, education, and brighter futures.">
+  <meta name="keywords" content="Kenya Kids Ry, Katja Maria, Children, Slums, Education, Charity, Success Stories">
+  <meta name="author" content="Kenya Kids Ry">
+
+  <!-- Open Graph (Social Media SEO) -->
+  <meta property="og:title" content="Kenya Kids Ry - Transforming Lives Since 2012">
+  <meta property="og:description" content="Helping children from slums to achieve education, better homes, and brighter futures.">
+  <meta property="og:image" content="images/home_hero.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourgithubusername.github.io/">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    header h1 {
+      color: #28a745;
+      font-size: 22px;
+      margin: 0;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #28a745;
+    }
+
+    /* Mobile menu button */
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* Side Menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background: white;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+      transition: right 0.3s ease;
+      padding-top: 60px;
+      z-index: 1100;
+    }
+    .side-menu a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .side-menu a:hover {
+      background: #f0f0f0;
+      color: #28a745;
+    }
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 80px;
+      background: url("images/home_hero.jpg") no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding: 20px;
+      animation: fadeIn 2s ease;
+    }
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #f1f1f1;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin: 5px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .btn-green {
+      background: #28a745;
+      color: white;
+    }
+    .btn-green:hover {
+      background: #218838;
+    }
+    .btn-outline {
+      border: 2px solid white;
+      color: white;
+    }
+    .btn-outline:hover {
+      background: white;
+      color: #333;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .hero h2 {
+        font-size: 28px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Kenya Kids Ry</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="success.html">Success Stories</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- Side Menu -->
+  <div class="side-menu" id="sideMenu">
+    <span class="close-btn" onclick="toggleMenu()">✖</span>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="success.html">Success Stories</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Transforming Lives Since 2012</h2>
+      <p>Founded by Katja Maria, Kenya Kids Ry helps children from slums to find better homes, access education, and grow into responsible citizens of Kenya.</p>
+      <a href="about.html" class="btn btn-green">Learn More</a>
+      <a href="success.html" class="btn btn-outline">See Success Stories</a>
+    </div>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      if (menu.style.right === "0px") {
+        menu.style.right = "-250px";
+      } else {
+        menu.style.right = "0px";
+      }
+    }
+  </script>
+
+</body>
+</html>
