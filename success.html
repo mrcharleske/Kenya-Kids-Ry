@@ -4,73 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Success Stories - Kenya Kids Ry</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
-    /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #fafafa; color: #333; line-height: 1.6; }
-
-    a { text-decoration: none; }
-
-    /* Navbar */
-    header {
-      background: linear-gradient(90deg, #007b5e, #6a11cb);
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    header .logo { font-size: 1.4rem; font-weight: bold; }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    nav ul li a { color: white; font-weight: 500; transition: color 0.3s ease; }
-    nav ul li a:hover { color: #f9d342; }
-
-    /* Hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger div { width: 25px; height: 3px; background: white; }
-
-    /* Mobile Menu */
-    .mobile-menu {
-      position: absolute;
-      top: -220px; left: 0; width: 100%;
-      background: #007b5e;
-      text-align: center;
-      transition: top 0.4s ease-in-out;
-    }
-    .mobile-menu ul { list-style: none; padding: 1rem; }
-    .mobile-menu ul li { margin: 1rem 0; }
-    .mobile-menu ul li a { color: white; font-size: 1.2rem; }
-    .mobile-menu.show { top: 70px; }
-
     /* Hero */
     .hero {
-      position: relative;
-      height: 45vh;
+      height: 50vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: white;
+      background: linear-gradient(135deg, #007b5e, #6a11cb);
     }
-    .hero::before {
-      content: "";
-      background: url('images/FB_IMG_1757424708818.jpg') center/cover no-repeat;
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      filter: blur(4px) brightness(0.6);
-      z-index: 1;
+    .hero-box {
+      background: white;
+      padding: 1.5rem 3rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: pulse 2s infinite ease-in-out;
     }
-    .hero h1 {
-      position: relative;
-      z-index: 2;
+    .hero-box h1 {
       font-size: 2.5rem;
-      background: rgba(255,255,255,0.85);
-      color: #6a11cb;
-      padding: 0.8rem 1.5rem;
-      border-radius: 12px;
-      animation: fadeUp 1.2s ease;
+      color: #007b5e;
     }
 
     /* Success Stories */
@@ -86,7 +40,10 @@
       transform: translateY(40px);
       transition: opacity 1s ease, transform 1s ease;
     }
-    .story.show { opacity: 1; transform: translateY(0); }
+    .story.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
     .story-images {
       display: flex;
       flex-direction: column;
@@ -99,41 +56,35 @@
       border-radius: 15px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
-    .story-text { flex: 1; }
-    .story-text h2 { color: #007b5e; margin-bottom: 1rem; }
-    .story-text p { margin-bottom: 1rem; }
-
-    /* Alternate layout */
-    .reverse { flex-direction: row-reverse; }
-
-    /* Footer */
-    footer {
-      background: linear-gradient(90deg, #6a11cb, #007b5e);
-      text-align: center;
-      padding: 1rem;
-      color: white;
-      margin-top: 2rem;
+    .story-text {
+      flex: 1;
+    }
+    .story-text h2 {
+      color: #007b5e;
+      margin-bottom: 1rem;
+    }
+    .story-text p {
+      margin-bottom: 1rem;
     }
 
-    /* Animations */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Alternate layout */
+    .reverse {
+      flex-direction: row-reverse;
     }
 
     /* Responsive */
-    @media(max-width: 900px) {
-      .story, .reverse { flex-direction: column; text-align: center; }
-      .story-images img { max-width: 100%; }
-    }
-    @media(max-width: 768px) {
-      nav ul { display: none; }
-      .hamburger { display: flex; }
+    @media (max-width: 900px) {
+      .story, .reverse {
+        flex-direction: column;
+        text-align: center;
+      }
+      .story-images img {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-
   <!-- Navbar -->
   <header>
     <div class="logo">Kenya Kids Ry</div>
@@ -160,14 +111,16 @@
 
   <!-- Hero -->
   <section class="hero">
-    <h1>Success Stories</h1>
+    <div class="hero-box">
+      <h1>Success Stories</h1>
+    </div>
   </section>
 
   <!-- Story 1 -->
   <section class="story">
     <div class="story-images">
-      <img src="images/FB_IMG_1757424708818.jpg" alt="Before Story 1">
-      <img src="images/Screenshot_20250909_170824_Facebook.jpg" alt="After Story 1">
+      <img src="images/FB_IMG_1757424708818.jpg" alt="Child before receiving support">
+      <img src="images/Screenshot_20250909_170824_Facebook.jpg" alt="Child after receiving support">
     </div>
     <div class="story-text">
       <h2>From Struggle to Confidence</h2>
@@ -178,8 +131,8 @@
   <!-- Story 2 -->
   <section class="story reverse">
     <div class="story-images">
-      <img src="images/FB_IMG_1757424944048.jpg" alt="Before Story 2">
-      <img src="images/FB_IMG_1757427718947~2.jpg" alt="After Story 2">
+      <img src="images/FB_IMG_1757424944048.jpg" alt="Child before mentorship program">
+      <img src="images/FB_IMG_1757427718947~2.jpg" alt="Child after mentorship program">
     </div>
     <div class="story-text">
       <h2>Healing Through Love</h2>
@@ -190,8 +143,8 @@
   <!-- Story 3 -->
   <section class="story">
     <div class="story-images">
-      <img src="images/FB_IMG_1757424970272.jpg" alt="Before Story 3">
-      <img src="images/FB_IMG_1757426548967.jpg" alt="After Story 3">
+      <img src="images/FB_IMG_1757424970272.jpg" alt="Child before support program">
+      <img src="images/FB_IMG_1757426548967.jpg" alt="Child thriving in safe environment">
     </div>
     <div class="story-text">
       <h2>From Fear to Freedom</h2>
@@ -202,8 +155,8 @@
   <!-- Story 4 -->
   <section class="story reverse">
     <div class="story-images">
-      <img src="images/FB_IMG_1757426160416.jpg" alt="Before Story 4">
-      <img src="images/FB_IMG_1757426118481.jpg" alt="After Story 4">
+      <img src="images/FB_IMG_1757426160416.jpg" alt="Child before educational support">
+      <img src="images/FB_IMG_1757426118481.jpg" alt="Child succeeding in education">
     </div>
     <div class="story-text">
       <h2>Education Unlocks Potential</h2>
@@ -214,8 +167,8 @@
   <!-- Story 5 -->
   <section class="story">
     <div class="story-images">
-      <img src="images/FB_IMG_1757426428156.jpg" alt="Before Story 5">
-      <img src="images/FB_IMG_1757422915425.jpg" alt="After Story 5">
+      <img src="images/FB_IMG_1757426428156.jpg" alt="Child before receiving care">
+      <img src="images/FB_IMG_1757422915425.jpg" alt="Child restored with joy">
     </div>
     <div class="story-text">
       <h2>Restoring Joy</h2>
@@ -226,8 +179,8 @@
   <!-- Story 6 -->
   <section class="story reverse">
     <div class="story-images">
-      <img src="images/FB_IMG_1757427795718.jpg" alt="Before Story 6">
-      <img src="images/FB_IMG_1757427776264.jpg" alt="After Story 6">
+      <img src="images/FB_IMG_1757427795718.jpg" alt="Child before community support">
+      <img src="images/FB_IMG_1757427776264.jpg" alt="Child with a brighter future">
     </div>
     <div class="story-text">
       <h2>Building a Brighter Future</h2>
@@ -245,8 +198,27 @@
     // Hamburger menu toggle
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = mobileMenu.querySelectorAll('a');
+
     hamburger.addEventListener('click', () => {
       mobileMenu.classList.toggle('show');
+      hamburger.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+        hamburger.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        mobileMenu.classList.remove('show');
+        hamburger.classList.remove('active');
+      }
     });
 
     // Fade-in on scroll
@@ -254,12 +226,11 @@
     window.addEventListener('scroll', () => {
       stories.forEach(story => {
         const position = story.getBoundingClientRect().top;
-        if (position < window.innerHeight - 100) {
+        if (position < window.innerHeight * 0.8) {
           story.classList.add('show');
         }
       });
     });
   </script>
-
 </body>
 </html>
