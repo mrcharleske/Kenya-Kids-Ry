@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Kenya Kids Ry</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/main.js"></script>
+  <style>
+    /* Extra styling for Contact Page */
+    .contact-section {
+      padding: 3rem 0;
+    }
+
+    .contact-section h2 {
+      text-align: center;
+      color: #007b5e;
+      margin-bottom: 2rem;
+    }
+
+    .facebook-btn {
+      display: inline-block;
+      background: #1877f2;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+
+    .facebook-btn::before {
+      content: "f";
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      position: absolute;
+      left: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      color: #1877f2;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-size: 1.2rem;
+    }
+
+    .facebook-btn:hover {
+      background: #0f5cc1;
+    }
+
+    .contact-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .contact-form button {
+      background: #007b5e;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #005640;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="brand">
+        <a href="index.html">Kenya Kids Ry</a>
+        <small>Founded 2012 • Katja Maria</small>
+      </div>
+      <nav class="desktop-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="success.html">Success Stories</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- Hamburger -->
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="success.html">Success Stories</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contact Section -->
+  <main class="contact-section">
+    <div class="container">
+      <h2>Get in Touch</h2>
+
+      <!-- Facebook Button -->
+      <div style="text-align:center; margin-bottom:2rem;">
+        <a href="https://www.facebook.com/YOUR_PAGE_LINK" target="_blank" class="facebook-btn">
+          Visit us on Facebook
+        </a>
+      </div>
+
+      <!-- Contact Form -->
+      <form class="contact-form" action="#" method="post">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="program">Program to Support</label>
+        <select id="program" name="program" required>
+          <option value="">-- Select a Program --</option>
+          <option value="education">Education</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="nutrition">Nutrition</option>
+          <option value="rehabilitation">Rehabilitation</option>
+        </select>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <button type="submit">Send Request</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2012 - 2025 Kenya Kids Ry. All rights reserved.</p>
+  </footer>
+</body>
+</html>
