@@ -3,12 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Kenya Kids Ry, founded by Katja Maria, and our mission to provide education and care to children in Kenya.">
+  <meta name="keywords" content="Kenya Kids Ry, about us, Katja Maria, child education Kenya">
+  <meta property="og:title" content="About - Kenya Kids Ry">
+  <meta property="og:description" content="Discover the story of Kenya Kids Ry and our founder, Katja Maria.">
+  <meta property="og:image" content="images/FB_IMG_1757424566661.jpg">
+  <meta property="og:url" content="https://yourwebsite.com/about.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Kenya Kids Ry",
+    "url": "https://yourwebsite.com/",
+    "founder": "Katja Maria",
+    "description": "Non-profit providing care and education to children in Kenya."
+  }
+  </script>
   <title>About - Kenya Kids Ry</title>
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Hero */
     .hero {
-      height: 50vh;
+      height: 25vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -17,13 +33,13 @@
     }
     .hero-box {
       background: white;
-      padding: 1.5rem 3rem;
-      border-radius: 15px;
+      padding: 1rem 2rem;
+      border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       animation: pulse 2s infinite ease-in-out;
     }
     .hero-box h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: #007b5e;
     }
 
@@ -132,7 +148,7 @@
 
   <!-- Footer -->
   <footer>
-    © 2025 Kenya Kids Ry | Founded by Katja Maria
+    © 2025 Kenya Kids Ry
   </footer>
 
   <!-- Script -->
@@ -163,16 +179,18 @@
       }
     });
 
-    // Fade-in on scroll
+    // Fade-in on scroll and page load
     const sections = document.querySelectorAll('.about-section');
-    window.addEventListener('scroll', () => {
+    function checkVisibility() {
       sections.forEach(section => {
         const position = section.getBoundingClientRect().top;
         if (position < window.innerHeight * 0.8) {
           section.classList.add('show');
         }
       });
-    });
+    }
+    window.addEventListener('scroll', checkVisibility);
+    window.addEventListener('load', checkVisibility);
   </script>
 </body>
 </html>
