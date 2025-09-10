@@ -3,173 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kenya Kids Ry</title>
+  <title>Kenya Kids Ry - Home</title>
+
   <style>
-    /* === Base Reset === */
+    /* --- Global Styles --- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
       color: #333;
+      line-height: 1.6;
     }
+
     a {
       text-decoration: none;
       color: inherit;
     }
 
-    /* === Header / Nav === */
+    /* --- Navbar --- */
     header {
-      background: #007b5e;
+      background: linear-gradient(90deg, #007b5e, #4aa8ff);
       color: white;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-    header h1 {
-      font-size: 1.2rem;
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
+
     nav ul {
       list-style: none;
       display: flex;
       gap: 1.5rem;
     }
+
     nav ul li a {
       color: white;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover {
-      color: #ffe600;
+      font-weight: 500;
+      transition: color 0.3s ease;
     }
 
-    /* === Hamburger === */
+    nav ul li a:hover {
+      color: #f9d342;
+    }
+
+    /* --- Hamburger --- */
     .hamburger {
       display: none;
       flex-direction: column;
-      justify-content: space-between;
-      width: 25px;
-      height: 18px;
       cursor: pointer;
-    }
-    .hamburger span {
-      display: block;
-      height: 3px;
-      width: 100%;
-      background: white;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translateY(8px);
-    }
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translateY(-8px);
+      gap: 5px;
     }
 
-    /* === Mobile Menu === */
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile Menu */
     .mobile-menu {
-      background: #007b5e;
       position: absolute;
-      top: -100%;
+      top: -200px;
       left: 0;
       width: 100%;
+      background: #007b5e;
       text-align: center;
       transition: top 0.4s ease-in-out;
     }
-    .mobile-menu.show {
-      top: 60px;
-    }
+
     .mobile-menu ul {
       list-style: none;
-      padding: 1rem 0;
+      padding: 1rem;
     }
+
     .mobile-menu ul li {
       margin: 1rem 0;
     }
+
     .mobile-menu ul li a {
       color: white;
-      font-size: 1.1rem;
-      font-weight: bold;
+      font-size: 1.2rem;
     }
 
-    /* === Hero Section === */
+    .mobile-menu.show {
+      top: 60px;
+    }
+
+    /* --- Hero Section --- */
     .hero {
-      background: url('images/home_hero.jpg') center/cover no-repeat;
-      height: 80vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       position: relative;
-    }
-    .hero-card {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 2rem;
-      max-width: 600px;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      opacity: 0;
-      transform: translateY(40px);
-      animation: heroFadeUp 1.2s ease forwards;
+      color: white;
+      overflow: hidden;
     }
-    @keyframes heroFadeUp {
+
+    .hero::before {
+      content: "";
+      background: url('images/home_hero.jpg') center/cover no-repeat;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      filter: blur(6px) brightness(0.7);
+      z-index: 1;
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.85);
+      color: #333;
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 600px;
+      animation: fadeUp 1.2s ease forwards;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .hero-card h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #007b5e;
+    }
+
+    .hero-card p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .hero-card .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      margin: 0.5rem;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #ff8c42, #f9d342);
+      color: #333;
+      font-weight: bold;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-card .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    /* --- Keyframes --- */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    .hero-card h2 {
-      margin-bottom: 1rem;
-      color: #007b5e;
-    }
-    .btn {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.7rem 1.5rem;
-      background: #007b5e;
-      color: white;
-      border-radius: 5px;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .btn:hover {
-      background: #005f46;
-      transform: scale(1.05);
-    }
 
-    /* === Content Section === */
-    .content {
-      padding: 2rem;
-    }
-    .content h2 {
-      color: #007b5e;
-      margin-bottom: 1rem;
-    }
-    .content p {
-      margin-bottom: 1rem;
-    }
-
-    /* === Footer === */
-    footer {
-      background: #007b5e;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-
-    /* === Responsive === */
-    @media (max-width: 768px) {
+    /* --- Responsive --- */
+    @media(max-width: 768px) {
       nav ul {
         display: none;
       }
@@ -180,73 +188,54 @@
   </style>
 </head>
 <body>
+
   <!-- Header -->
   <header>
-    <h1>Kenya Kids Ry <small>Founded 2012 • Katja Maria</small></h1>
+    <div class="logo">Kenya Kids Ry</div>
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Success Stories</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="success.html">Success Stories</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   </header>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu">
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Success Stories</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="success.html">Success Stories</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-card">
-      <h2>Kenya Kids Ry</h2>
-      <p>Empowering children since 2012 — founded by Katja Maria.  
-         We bring care, education, and hope to every child.</p>
-      <a href="#" class="btn">Learn about Katja</a>
-      <a href="#" class="btn">Our Success Stories</a>
+      <h1>Welcome to Kenya Kids Ry</h1>
+      <p>Founded in 2012 by Katja Maria, Kenya Kids Ry is dedicated to empowering children through education, care, and hope for a brighter future.</p>
+      <a href="about.html" class="btn">Learn More</a>
+      <a href="success.html" class="btn">See Success Stories</a>
     </div>
   </section>
 
-  <!-- Content -->
-  <section class="content">
-    <h2>What we do</h2>
-    <p>Kenya Kids Ry works directly with communities to provide healthcare, education, and rehabilitation services to children in need. Our work blends compassion, local partnerships, and measurable outcomes.</p>
-    
-    <h3>Community Care</h3>
-    <p>Local outreach and support that keeps children safe and healthy.</p>
-    
-    <h3>Education</h3>
-    <p>Programs that ensure access to quality education for every child.</p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Kenya Kids Ry. All rights reserved.</p>
-  </footer>
-
-  <!-- Script -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const hamburger = document.querySelector(".hamburger");
-      const mobileMenu = document.querySelector(".mobile-menu");
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
 
-      hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        mobileMenu.classList.toggle("show");
-      });
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('show');
     });
   </script>
+
 </body>
 </html>
