@@ -67,14 +67,25 @@ nav ul li a:hover {
   transition: all 0.3s ease;
 }
 
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* Mobile Menu */
 .mobile-menu {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background: rgba(0, 123, 94, 0.95);
+  background: transparent;
   text-align: center;
   transform: translateY(-100%);
   transition: transform 0.4s ease-in-out;
@@ -86,8 +97,12 @@ nav ul li a:hover {
 }
 
 .mobile-menu ul {
+  background: rgba(0, 123, 94, 0.95);
   list-style: none;
-  padding: 4rem 1rem;
+  padding: 2rem;
+  margin: 4rem auto 0;
+  max-width: 300px;
+  border-radius: 0 0 12px 12px;
 }
 
 .mobile-menu ul li {
