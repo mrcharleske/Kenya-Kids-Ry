@@ -5,120 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - Kenya Kids Ry</title>
   <style>
-    /* === Base Reset === */
+    /* Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    a { text-decoration: none; color: inherit; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #fafafa; color: #333; line-height: 1.6; }
 
-    /* === Header / Nav === */
+    a { text-decoration: none; }
+
+    /* Navbar */
     header {
-      background: #007b5e;
+      background: linear-gradient(90deg, #007b5e, #6a11cb);
       color: white;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-    header h1 { font-size: 1.2rem; }
+    header .logo { font-size: 1.4rem; font-weight: bold; }
     nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    nav ul li a { color: white; font-weight: bold; transition: color 0.3s; }
-    nav ul li a:hover { color: #ffe600; }
+    nav ul li a { color: white; font-weight: 500; transition: color 0.3s ease; }
+    nav ul li a:hover { color: #f9d342; }
 
-    /* === Hamburger === */
-    .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 25px; height: 18px; cursor: pointer; }
-    .hamburger span { display: block; height: 3px; width: 100%; background: white; border-radius: 2px; transition: all 0.3s ease; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger div { width: 25px; height: 3px; background: white; }
 
-    /* === Mobile Menu === */
+    /* Mobile Menu */
     .mobile-menu {
-      background: #007b5e;
       position: absolute;
-      top: -100%;
-      left: 0;
-      width: 100%;
+      top: -220px; left: 0; width: 100%;
+      background: #007b5e;
       text-align: center;
       transition: top 0.4s ease-in-out;
     }
-    .mobile-menu.show { top: 60px; }
-    .mobile-menu ul { list-style: none; padding: 1rem 0; }
+    .mobile-menu ul { list-style: none; padding: 1rem; }
     .mobile-menu ul li { margin: 1rem 0; }
-    .mobile-menu ul li a { color: white; font-size: 1.1rem; font-weight: bold; }
+    .mobile-menu ul li a { color: white; font-size: 1.2rem; }
+    .mobile-menu.show { top: 70px; }
 
-    /* === Hero Section === */
+    /* Hero */
     .hero {
-      background: url('images/about_kidsry.jpg') center/cover no-repeat;
-      height: 50vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       position: relative;
-    }
-    .hero-card {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 2rem;
-      max-width: 600px;
+      height: 45vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      color: white;
+    }
+    .hero::before {
+      content: "";
+      background: url('images/FB_IMG_1757424749416.jpg') center/cover no-repeat;
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      filter: blur(4px) brightness(0.6);
+      z-index: 1;
+    }
+    .hero h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 2.5rem;
+      background: rgba(255,255,255,0.85);
+      color: #007b5e;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      animation: fadeUp 1.2s ease;
+    }
+
+    /* About Sections */
+    .about-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 3rem auto;
+      gap: 2rem;
+      padding: 0 1rem;
       opacity: 0;
       transform: translateY(40px);
-      animation: heroFadeUp 1.2s ease forwards;
+      transition: opacity 1s ease, transform 1s ease;
     }
-    @keyframes heroFadeUp { to { opacity: 1; transform: translateY(0); } }
-    .hero-card h2 { margin-bottom: 1rem; color: #007b5e; }
-
-    /* === About Section === */
-    .about {
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    .about img {
+    .about-section.show { opacity: 1; transform: translateY(0); }
+    .about-section img {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      opacity: 0;
-      transform: scale(0.9);
-      animation: fadeZoom 1s ease forwards;
+      max-width: 450px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
-    @keyframes fadeZoom { to { opacity: 1; transform: scale(1); } }
-    .about-text {
-      opacity: 0;
-      transform: translateX(-30px);
-      animation: slideIn 1.2s ease forwards;
-      animation-delay: 0.3s;
-    }
-    @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
-    .about-text h3 { color: #007b5e; margin-bottom: 1rem; }
+    .about-text { flex: 1; }
+    .about-text h2 { color: #6a11cb; margin-bottom: 1rem; }
+    .about-text p { margin-bottom: 1rem; }
 
-    /* === Footer === */
+    /* Alternate layout */
+    .reverse { flex-direction: row-reverse; }
+
+    /* Footer */
     footer {
-      background: #007b5e;
-      color: white;
+      background: linear-gradient(90deg, #6a11cb, #007b5e);
       text-align: center;
       padding: 1rem;
+      color: white;
       margin-top: 2rem;
     }
 
-    /* === Responsive === */
-    @media (max-width: 768px) {
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media(max-width: 900px) {
+      .about-section, .reverse { flex-direction: column; text-align: center; }
+      .about-section img { max-width: 90%; }
+    }
+    @media(max-width: 768px) {
       nav ul { display: none; }
       .hamburger { display: flex; }
-      .about { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- Navbar -->
   <header>
-    <h1>Kenya Kids Ry <small>Founded 2012 • Katja Maria</small></h1>
+    <div class="logo">Kenya Kids Ry</div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -127,11 +139,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <div class="hamburger"><div></div><div></div><div></div></div>
   </header>
 
   <!-- Mobile Menu -->
@@ -144,51 +152,56 @@
     </ul>
   </div>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="hero-card">
+    <h1>About Us</h1>
+  </section>
+
+  <!-- Katja Section -->
+  <section class="about-section">
+    <img src="images/FB_IMG_1757424566661.jpg" alt="Katja Maria - Founder">
+    <div class="about-text">
+      <h2>Meet Katja Maria</h2>
+      <p>Katja Maria, a humanitarian with a heart for children, founded Kenya Kids Ry out of a deep passion to transform lives through love, care, and education. Her journey began with a single step of faith, reaching out to children living in hardship and providing them with hope.</p>
+      <p>Through her leadership and dedication, Katja has been instrumental in building bridges of opportunity for children who otherwise would be left behind. She strongly believes that every child deserves the chance to discover their potential and live a life of dignity.</p>
+    </div>
+  </section>
+
+  <!-- Kenya Kids Ry Section -->
+  <section class="about-section reverse">
+    <img src="images/FB_IMG_1757424749416.jpg" alt="Kenya Kids Ry">
+    <div class="about-text">
       <h2>About Kenya Kids Ry</h2>
-      <p>Founded in 2012 by Katja Maria, Kenya Kids Ry is dedicated to transforming the lives of vulnerable children through education, healthcare, and community support.</p>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about">
-    <div class="about-text">
-      <h3>Meet Katja Maria</h3>
-      <p>Katja Maria, the visionary behind Kenya Kids Ry, believed that every child deserves love, dignity, and opportunity. Since 2012, her mission has been to empower children and build stronger communities.</p>
-    </div>
-    <div>
-      <img src="images/about_katja.jpg" alt="Katja Maria">
-    </div>
-  </section>
-
-  <section class="about">
-    <div>
-      <img src="images/about_kidsry.jpg" alt="Kenya Kids Ry Work">
-    </div>
-    <div class="about-text">
-      <h3>Our Work</h3>
-      <p>Kenya Kids Ry partners with local communities to provide education, healthcare, and rehabilitation services. Together, we create hope, inspire change, and build a brighter future for children.</p>
+      <p>Kenya Kids Ry is a child-focused initiative dedicated to providing education, healthcare, and mentorship to vulnerable children across Kenya. Our mission is to break the cycle of poverty by empowering children with tools to succeed.</p>
+      <p>We focus not only on academics, but also on holistic growth — ensuring children receive the love, care, and emotional support they need to thrive. Over the years, Kenya Kids Ry has impacted hundreds of lives, proving that with compassion and community, transformation is possible.</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Kenya Kids Ry. All rights reserved.</p>
+    © 2025 Kenya Kids Ry | Founded by Katja Maria
   </footer>
 
   <!-- Script -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const hamburger = document.querySelector(".hamburger");
-      const mobileMenu = document.querySelector(".mobile-menu");
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('show');
+    });
 
-      hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        mobileMenu.classList.toggle("show");
+    // Fade-in on scroll
+    const sections = document.querySelectorAll('.about-section');
+    window.addEventListener('scroll', () => {
+      sections.forEach(section => {
+        const position = section.getBoundingClientRect().top;
+        if (position < window.innerHeight - 100) {
+          section.classList.add('show');
+        }
       });
     });
   </script>
+
 </body>
 </html>
