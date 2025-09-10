@@ -118,7 +118,7 @@
 
     .hero::before {
       content: "";
-      background: url('images/home_hero.jpg') center/cover no-repeat;
+      background: url('images/FB_IMG_1757425934086.jpg') center/cover no-repeat;
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       filter: blur(6px) brightness(0.7);
@@ -162,6 +162,21 @@
     .hero-card .btn:hover {
       transform: scale(1.05);
       box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    /* --- Hero Caption --- */
+    .hero-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1.2rem;
+      background: rgba(0,0,0,0.5);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      z-index: 2;
+      animation: fadeUp 1.5s ease;
     }
 
     /* --- Keyframes --- */
@@ -224,6 +239,9 @@
       <p>Founded in 2012 by Katja Maria, Kenya Kids Ry is dedicated to empowering children through education, care, and hope for a brighter future.</p>
       <a href="about.html" class="btn">Learn More</a>
       <a href="success.html" class="btn">See Success Stories</a>
+    </div>
+    <div class="hero-caption">
+      Bringing hope, education, and brighter futures for every child.
     </div>
   </section>
 
