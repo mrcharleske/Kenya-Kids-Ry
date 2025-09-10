@@ -4,21 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kenya Kids Ry - Home</title>
-
   <style>
-    /* --- Global Styles --- */
+    /* Reset & Global */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
-    }
-    a { text-decoration: none; color: inherit; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #fafafa; color: #333; line-height: 1.6; }
 
-    /* --- Navbar --- */
+    a { text-decoration: none; }
+
+    /* Navbar */
     header {
-      background: linear-gradient(90deg, #007b5e, #4aa8ff);
+      background: linear-gradient(90deg, #007b5e, #6a11cb);
       color: white;
       padding: 1rem 2rem;
       display: flex;
@@ -28,106 +23,122 @@
       top: 0;
       z-index: 1000;
     }
-    header .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
+    header .logo { font-size: 1.4rem; font-weight: bold; }
     nav ul { list-style: none; display: flex; gap: 1.5rem; }
     nav ul li a { color: white; font-weight: 500; transition: color 0.3s ease; }
     nav ul li a:hover { color: #f9d342; }
 
-    /* --- Hamburger --- */
-    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
-    .hamburger div { width: 25px; height: 3px; background: white; transition: all 0.3s ease; }
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger div { width: 25px; height: 3px; background: white; }
 
     /* Mobile Menu */
     .mobile-menu {
-      position: absolute; top: -200px; left: 0; width: 100%;
-      background: #007b5e; text-align: center; transition: top 0.4s ease-in-out;
+      position: absolute;
+      top: -220px; left: 0; width: 100%;
+      background: #007b5e;
+      text-align: center;
+      transition: top 0.4s ease-in-out;
     }
     .mobile-menu ul { list-style: none; padding: 1rem; }
     .mobile-menu ul li { margin: 1rem 0; }
     .mobile-menu ul li a { color: white; font-size: 1.2rem; }
-    .mobile-menu.show { top: 60px; }
+    .mobile-menu.show { top: 70px; }
 
-    /* --- Hero Section --- */
+    /* Hero */
     .hero {
       position: relative;
-      height: 50vh; /* smaller height */
+      height: 65vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
-      overflow: hidden;
     }
     .hero::before {
       content: "";
       background: url('images/FB_IMG_1757425934086.jpg') center/cover no-repeat;
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      filter: blur(6px) brightness(0.7);
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      filter: blur(4px) brightness(0.6);
       z-index: 1;
     }
     .hero-card {
       position: relative;
       z-index: 2;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       color: #333;
-      padding: 1.5rem;
-      border-radius: 12px;
-      max-width: 600px;
-      animation: fadeUp 1.2s ease forwards;
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 650px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      animation: fadeUp 1.2s ease;
     }
-    .hero-card h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #007b5e; }
-    .hero-card p { margin-bottom: 1rem; font-size: 1rem; }
-    .hero-card .btn {
-      display: inline-block; padding: 0.6rem 1.2rem; margin: 0.5rem;
-      border-radius: 30px; background: linear-gradient(90deg, #ff8c42, #f9d342);
+    .hero-card h1 { font-size: 2.2rem; margin-bottom: 0.8rem; color: #007b5e; }
+    .hero-card p { margin-bottom: 1rem; font-size: 1.05rem; }
+    .btn {
+      display: inline-block; padding: 0.6rem 1.2rem;
+      margin: 0.5rem;
+      border-radius: 25px;
+      background: linear-gradient(90deg, #ff8c42, #f9d342);
       color: #333; font-weight: bold;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .hero-card .btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
-    .hero-caption {
-      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-      color: white; font-size: 1rem; background: rgba(0,0,0,0.5);
-      padding: 0.4rem 1rem; border-radius: 8px; z-index: 2;
-      animation: fadeUp 1.5s ease;
+    .btn:hover { transform: scale(1.05); box-shadow: 0 6px 15px rgba(0,0,0,0.3); }
+
+    /* Quote Section */
+    .quote {
+      text-align: center;
+      padding: 2rem;
+      font-size: 1.3rem;
+      color: #6a11cb;
+      font-style: italic;
     }
 
-    /* --- Extra Content Section --- */
-    .content {
-      padding: 3rem 2rem;
-      max-width: 900px;
+    /* Cards Section */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
       margin: auto;
+      padding: 2rem;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
     }
-    .content h2 {
-      color: #007b5e;
-      margin-bottom: 1rem;
-      font-size: 2rem;
-    }
-    .content p {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      animation: fadeUp 1.3s ease;
+    .card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .card h3 { color: #007b5e; margin-bottom: 0.8rem; }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #6a11cb, #007b5e);
+      text-align: center;
+      padding: 1rem;
+      color: white;
+      margin-top: 2rem;
     }
 
-    /* --- Animations --- */
+    /* Animations */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- Responsive --- */
+    /* Responsive */
     @media(max-width: 768px) {
       nav ul { display: none; }
       .hamburger { display: flex; }
-      .hero { height: 60vh; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Navbar -->
   <header>
     <div class="logo">Kenya Kids Ry</div>
     <nav>
@@ -138,9 +149,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <div class="hamburger">
-      <div></div><div></div><div></div>
-    </div>
+    <div class="hamburger"><div></div><div></div><div></div></div>
   </header>
 
   <!-- Mobile Menu -->
@@ -153,28 +162,45 @@
     </ul>
   </div>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-card">
-      <h1>Welcome to Kenya Kids Ry</h1>
-      <p>Founded in 2012 by Katja Maria, Kenya Kids Ry is dedicated to empowering children.</p>
+      <h1>Inspiring Hope, Transforming Lives</h1>
+      <p>Since 2012, Kenya Kids Ry has been working tirelessly to bring care, education, and brighter futures to children in need. Founded by Katja Maria, we believe that every child deserves love, dignity, and the chance to thrive.</p>
       <a href="about.html" class="btn">Learn More</a>
-      <a href="success.html" class="btn">See Success Stories</a>
-    </div>
-    <div class="hero-caption">
-      Bringing hope, education, and brighter futures for every child.
+      <a href="success.html" class="btn">Our Success Stories</a>
     </div>
   </section>
 
-  <!-- Extra Content -->
-  <section class="content">
-    <h2>Our Mission</h2>
-    <p>Kenya Kids Ry was founded to give children access to education, healthcare, and opportunities that transform lives. Since 2012, we have supported countless success stories, proving that with care and dedication, every child can shine.</p>
-    <p>Together, we can build a brighter tomorrow.</p>
+  <!-- Quote -->
+  <div class="quote">
+    “Education is the most powerful weapon which you can use to change the world.” — Nelson Mandela
+  </div>
+
+  <!-- Cards -->
+  <section class="cards">
+    <div class="card">
+      <h3>Community Care</h3>
+      <p>We provide healthcare and outreach support that ensures children grow up safe, healthy, and strong.</p>
+    </div>
+    <div class="card">
+      <h3>Education</h3>
+      <p>Through school programs and mentorship, we ensure every child has the opportunity to learn and succeed.</p>
+    </div>
+    <div class="card">
+      <h3>Success Stories</h3>
+      <p>From hardship to hope — discover the incredible journeys of children whose lives have been transformed.</p>
+    </div>
   </section>
 
+  <!-- Footer -->
+  <footer>
+    © 2025 Kenya Kids Ry | Founded by Katja Maria
+  </footer>
+
+  <!-- Script -->
   <script>
-    // Mobile menu toggle
+    // Hamburger menu toggle
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.querySelector('.mobile-menu');
     hamburger.addEventListener('click', () => {
