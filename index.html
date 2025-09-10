@@ -1,10 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<nav class="mobile-menu" aria-hidden="true">
+  <div class="mobile-inner">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="success.html">Success Stories</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kenya Kids Ry - Home</title>
   <style>
+    /* ============== MOBILE MENU (robust) ============== */
+:root { --header-h: 64px; } /* adjust if your header is taller */
+
+.hamburger { display: none; width:28px; height:22px; cursor:pointer; align-items:center; justify-content:center; }
+.hamburger span { display:block; height:3px; width:100%; background:#fff; border-radius:3px; transition: transform .28s ease, opacity .28s ease; }
+
+/* transform to X when active */
+.hamburger.active span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+.hamburger.active span:nth-child(2){ opacity:0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+/* Mobile menu: fixed, slides in with transform (works regardless header size) */
+.mobile-menu {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  transform: translateY(-120%); /* hidden above view */
+  transition: transform .35s cubic-bezier(.2,.9,.2,1);
+  z-index: 2200;
+  background: linear-gradient(90deg,#007b5e,#4aa8ff); /* same site theme */
+  color: white;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* when shown, slide in and leave a visible header on top */
+.mobile-menu.show { transform: translateY(0); }
+
+/* inner padding so items sit below header area */
+.mobile-menu .mobile-inner { padding: calc(var(--header-h) + 12px) 1rem 1.5rem; }
+
+/* menu links */
+.mobile-menu ul { list-style: none; margin: 0; padding: 0; display:flex; flex-direction:column; gap: .25rem; }
+.mobile-menu a { display:block; padding: 0.9rem 1rem; color: white; font-weight:600; border-radius:8px; }
+.mobile-menu a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+/* show hamburger only on small screens */
+@media (max-width: 768px) {
+  .hamburger { display: flex; flex-direction:column; gap:5px; }
+  nav ul { display:none; } /* hide desktop nav on mobile */
+}
     /* Reset & Global */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #fafafa; color: #333; line-height: 1.6; }
@@ -29,8 +82,11 @@
     nav ul li a:hover { color: #f9d342; }
 
     /* Hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger div { width: 25px; height: 3px; background: white; }
+<div class="hamburger" role="button" aria-label="Open menu" aria-expanded="false" tabindex="0">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
     /* Mobile Menu */
     .mobile-menu {
@@ -200,12 +256,57 @@
 
   <!-- Script -->
   <script>
-    // Hamburger menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('show');
+document.addEventListener('DOMContentLoaded', ()=> {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+  const body = document.body;
+
+  if (!hamburger || !mobileMenu) return; // safety
+
+  // Toggle function
+  function setMenu(open) {
+    if (open) {
+      mobileMenu.classList.add('show');
+      hamburger.classList.add('active');
+      mobileMenu.setAttribute('aria-hidden','false');
+      hamburger.setAttribute('aria-expanded','true');
+      body.style.overflow = 'hidden'; // prevent background scroll
+    } else {
+      mobileMenu.classList.remove('show');
+      hamburger.classList.remove('active');
+      mobileMenu.setAttribute('aria-hidden','true');
+      hamburger.setAttribute('aria-expanded','false');
+      body.style.overflow = '';
+    }
+  }
+
+  // click hamburger
+  hamburger.addEventListener('click', ()=> setMenu(!mobileMenu.classList.contains('show')));
+
+  // make Enter/Space on hamburger open it (keyboard)
+  hamburger.addEventListener('keydown', (e)=> {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setMenu(!mobileMenu.classList.contains('show')); }
+  });
+
+  // close menu when a link is clicked (so navigation works)
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', ()=> {
+      setMenu(false);
+      // allow link to navigate naturally
     });
+  });
+
+  // close on outside click (click the overlay area)
+  mobileMenu.addEventListener('click', (e)=> {
+    if (e.target === mobileMenu) setMenu(false);
+  });
+
+  // close on ESC
+  document.addEventListener('keydown', (e)=> {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('show')) setMenu(false);
+  });
+});
   </script>
 
 </body>
