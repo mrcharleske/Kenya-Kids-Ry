@@ -3,12 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover inspiring success stories of children transformed by Kenya Kids Ry's education and care programs.">
+  <meta name="keywords" content="Kenya Kids Ry, success stories, child transformation, education Kenya">
+  <meta property="og:title" content="Success Stories - Kenya Kids Ry">
+  <meta property="og:description" content="See how Kenya Kids Ry changes lives through education, care, and mentorship.">
+  <meta property="og:image" content="images/FB_IMG_1757424708818.jpg">
+  <meta property="og:url" content="https://yourwebsite.com/success.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Kenya Kids Ry",
+    "url": "https://yourwebsite.com/",
+    "founder": "Katja Maria",
+    "description": "Non-profit providing care and education to children in Kenya."
+  }
+  </script>
   <title>Success Stories - Kenya Kids Ry</title>
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Hero */
     .hero {
-      height: 50vh;
+      height: 25vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -17,13 +33,13 @@
     }
     .hero-box {
       background: white;
-      padding: 1.5rem 3rem;
-      border-radius: 15px;
+      padding: 1rem 2rem;
+      border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       animation: pulse 2s infinite ease-in-out;
     }
     .hero-box h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: #007b5e;
     }
 
@@ -124,7 +140,7 @@
     </div>
     <div class="story-text">
       <h2>From Struggle to Confidence</h2>
-      <p>Once facing extreme hardship, this child found renewed hope through education and support. Today, they stand with confidence and a bright future ahead.</p>
+      <p>Once facing extreme hardship, this children found renewed hope. Today, they stand with confidence and a bright future ahead.</p>
     </div>
   </section>
 
@@ -136,7 +152,7 @@
     </div>
     <div class="story-text">
       <h2>Healing Through Love</h2>
-      <p>Through consistent care and mentorship, this transformation showcases how compassion can restore dignity and self-worth in a child’s life.</p>
+      <p>Through consistent care and mentorship, these transformation showcases how compassion can restore dignity and self-worth in a child’s life.</p>
     </div>
   </section>
 
@@ -148,7 +164,7 @@
     </div>
     <div class="story-text">
       <h2>From Fear to Freedom</h2>
-      <p>Overcoming trauma is never easy, but with encouragement and resources, this child now thrives in a safe, supportive environment.</p>
+      <p>Overcoming trauma is never easy, but with encouragement and resources, these children now thrives in a safe, supportive environment.</p>
     </div>
   </section>
 
@@ -159,8 +175,8 @@
       <img src="images/FB_IMG_1757426118481.jpg" alt="Child succeeding in education">
     </div>
     <div class="story-text">
-      <h2>Education Unlocks Potential</h2>
-      <p>Given access to education, this child’s journey proves how learning opens doors to opportunities that were once unimaginable.</p>
+      <h2>Building a Brighter Future</h2>
+      <p>With proper guidance and community support, this young life has been redirected towards hope, success, and endless possibilities..</p>
     </div>
   </section>
 
@@ -171,8 +187,8 @@
       <img src="images/FB_IMG_1757422915425.jpg" alt="Child restored with joy">
     </div>
     <div class="story-text">
-      <h2>Restoring Joy</h2>
-      <p>A once broken spirit now shines with happiness, proof that every child deserves the chance to laugh, learn, and dream again.</p>
+      <h2>Education UnlocksPotential</h2>
+      <p>Given access to education, this child’s journey proves how learning opens doors to opportunities that were once unimaginable..</p>
     </div>
   </section>
 
@@ -183,14 +199,14 @@
       <img src="images/FB_IMG_1757427776264.jpg" alt="Child with a brighter future">
     </div>
     <div class="story-text">
-      <h2>Building a Brighter Future</h2>
-      <p>With proper guidance and community support, this young life has been redirected towards hope, success, and endless possibilities.</p>
+      <h2>Restoring Joy</h2>
+      <p>Once broken spirits now shines with happiness, proof that every child deserves the chance to laugh, learn, and dream again.</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    © 2025 Kenya Kids Ry | Founded by Katja Maria
+    © 2025 Kenya Kids Ry 
   </footer>
 
   <!-- Script -->
@@ -221,16 +237,18 @@
       }
     });
 
-    // Fade-in on scroll
+    // Fade-in on scroll and page load
     const stories = document.querySelectorAll('.story');
-    window.addEventListener('scroll', () => {
+    function checkVisibility() {
       stories.forEach(story => {
         const position = story.getBoundingClientRect().top;
         if (position < window.innerHeight * 0.8) {
           story.classList.add('show');
         }
       });
-    });
+    }
+    window.addEventListener('scroll', checkVisibility);
+    window.addEventListener('load', checkVisibility);
   </script>
 </body>
 </html>
