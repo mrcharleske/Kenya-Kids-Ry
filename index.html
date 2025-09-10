@@ -7,23 +7,14 @@
 
   <style>
     /* --- Global Styles --- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f9f9f9;
       color: #333;
       line-height: 1.6;
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
 
     /* --- Navbar --- */
     header {
@@ -37,77 +28,29 @@
       top: 0;
       z-index: 1000;
     }
-
-    header .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    nav ul li a {
-      color: white;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #f9d342;
-    }
+    header .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav ul li a { color: white; font-weight: 500; transition: color 0.3s ease; }
+    nav ul li a:hover { color: #f9d342; }
 
     /* --- Hamburger --- */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-    }
-
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background: white;
-      transition: all 0.3s ease;
-    }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .hamburger div { width: 25px; height: 3px; background: white; transition: all 0.3s ease; }
 
     /* Mobile Menu */
     .mobile-menu {
-      position: absolute;
-      top: -200px;
-      left: 0;
-      width: 100%;
-      background: #007b5e;
-      text-align: center;
-      transition: top 0.4s ease-in-out;
+      position: absolute; top: -200px; left: 0; width: 100%;
+      background: #007b5e; text-align: center; transition: top 0.4s ease-in-out;
     }
-
-    .mobile-menu ul {
-      list-style: none;
-      padding: 1rem;
-    }
-
-    .mobile-menu ul li {
-      margin: 1rem 0;
-    }
-
-    .mobile-menu ul li a {
-      color: white;
-      font-size: 1.2rem;
-    }
-
-    .mobile-menu.show {
-      top: 60px;
-    }
+    .mobile-menu ul { list-style: none; padding: 1rem; }
+    .mobile-menu ul li { margin: 1rem 0; }
+    .mobile-menu ul li a { color: white; font-size: 1.2rem; }
+    .mobile-menu.show { top: 60px; }
 
     /* --- Hero Section --- */
     .hero {
       position: relative;
-      height: 100vh;
+      height: 50vh; /* smaller height */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -115,7 +58,6 @@
       color: white;
       overflow: hidden;
     }
-
     .hero::before {
       content: "";
       background: url('images/FB_IMG_1757425934086.jpg') center/cover no-repeat;
@@ -124,81 +66,62 @@
       filter: blur(6px) brightness(0.7);
       z-index: 1;
     }
-
     .hero-card {
       position: relative;
       z-index: 2;
       background: rgba(255, 255, 255, 0.85);
       color: #333;
-      padding: 2rem;
-      border-radius: 15px;
+      padding: 1.5rem;
+      border-radius: 12px;
       max-width: 600px;
       animation: fadeUp 1.2s ease forwards;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
-
-    .hero-card h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #007b5e;
-    }
-
-    .hero-card p {
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
-    }
-
+    .hero-card h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #007b5e; }
+    .hero-card p { margin-bottom: 1rem; font-size: 1rem; }
     .hero-card .btn {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      margin: 0.5rem;
-      border-radius: 30px;
-      background: linear-gradient(90deg, #ff8c42, #f9d342);
-      color: #333;
-      font-weight: bold;
+      display: inline-block; padding: 0.6rem 1.2rem; margin: 0.5rem;
+      border-radius: 30px; background: linear-gradient(90deg, #ff8c42, #f9d342);
+      color: #333; font-weight: bold;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .hero-card .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    }
-
-    /* --- Hero Caption --- */
+    .hero-card .btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
     .hero-caption {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-size: 1.2rem;
-      background: rgba(0,0,0,0.5);
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      z-index: 2;
+      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+      color: white; font-size: 1rem; background: rgba(0,0,0,0.5);
+      padding: 0.4rem 1rem; border-radius: 8px; z-index: 2;
       animation: fadeUp 1.5s ease;
     }
 
-    /* --- Keyframes --- */
+    /* --- Extra Content Section --- */
+    .content {
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+    .content h2 {
+      color: #007b5e;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+    .content p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      animation: fadeUp 1.3s ease;
+    }
+
+    /* --- Animations --- */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* --- Responsive --- */
     @media(max-width: 768px) {
-      nav ul {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+      .hero { height: 60vh; }
     }
   </style>
 </head>
@@ -216,9 +139,7 @@
       </ul>
     </nav>
     <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
+      <div></div><div></div><div></div>
     </div>
   </header>
 
@@ -236,7 +157,7 @@
   <section class="hero">
     <div class="hero-card">
       <h1>Welcome to Kenya Kids Ry</h1>
-      <p>Founded in 2012 by Katja Maria, Kenya Kids Ry is dedicated to empowering children through education, care, and hope for a brighter future.</p>
+      <p>Founded in 2012 by Katja Maria, Kenya Kids Ry is dedicated to empowering children.</p>
       <a href="about.html" class="btn">Learn More</a>
       <a href="success.html" class="btn">See Success Stories</a>
     </div>
@@ -245,11 +166,17 @@
     </div>
   </section>
 
+  <!-- Extra Content -->
+  <section class="content">
+    <h2>Our Mission</h2>
+    <p>Kenya Kids Ry was founded to give children access to education, healthcare, and opportunities that transform lives. Since 2012, we have supported countless success stories, proving that with care and dedication, every child can shine.</p>
+    <p>Together, we can build a brighter tomorrow.</p>
+  </section>
+
   <script>
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.querySelector('.mobile-menu');
-
     hamburger.addEventListener('click', () => {
       mobileMenu.classList.toggle('show');
     });
