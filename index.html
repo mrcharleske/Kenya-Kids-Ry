@@ -24,14 +24,28 @@
   <style>
     /* Hero */
     .hero {
+      position: relative;
       height: 50vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: linear-gradient(135deg, #007b5e, #6a11cb);
+      color: white;
+    }
+    .hero::before {
+      content: "";
+      background: url('images/FB_IMG_1757425934086.jpg') center/cover no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      filter: blur(4px) brightness(0.6);
+      z-index: 1;
     }
     .hero-card {
+      position: relative;
+      z-index: 2;
       background: rgba(255, 255, 255, 0.9);
       color: #333;
       padding: 2rem;
@@ -143,12 +157,12 @@
   <!-- Cards -->
   <section class="cards">
     <div class="card">
-      <h3>Education</h3>
-      <p>Through school programs and mentorship, we ensure every child has the opportunitytolearnandsucceed.</p>
+      <h3>Community Care</h3>
+      <p>We provide healthcare and outreach support that ensures children grow up safe, healthy, and strong.</p>
     </div>
     <div class="card">
-      <h3>Community Health</h3>
-      <p>We provide healthcare and outreach support that ensures children grow up safe, healthy, and strong.</p>
+      <h3>Education</h3>
+      <p>Through school programs and mentorship, we ensure every child has the opportunity to learn and succeed.</p>
     </div>
     <div class="card">
       <h3>Success Stories</h3>
@@ -158,7 +172,7 @@
 
   <!-- Footer -->
   <footer>
-    © 2025 Kenya Kids Ry 
+    © 2025 Kenya Kids Ry | Founded by Katja Maria
   </footer>
 
   <!-- Script -->
