@@ -1,173 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Kenya Kids Ry</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <script defer src="js/main.js"></script>
   <style>
-    /* Extra styling for Contact Page */
-    .contact-section {
-      padding: 3rem 0;
-    }
+    /* === Base Reset === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+    a { text-decoration: none; color: inherit; }
 
-    .contact-section h2 {
+    /* === Header / Nav === */
+    header {
+      background: #007b5e;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 { font-size: 1.2rem; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav ul li a { color: white; font-weight: bold; transition: color 0.3s; }
+    nav ul li a:hover { color: #ffe600; }
+
+    /* === Hamburger === */
+    .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 25px; height: 18px; cursor: pointer; }
+    .hamburger span { display: block; height: 3px; width: 100%; background: white; border-radius: 2px; transition: all 0.3s ease; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+
+    /* === Mobile Menu === */
+    .mobile-menu {
+      background: #007b5e;
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
       text-align: center;
-      color: #007b5e;
-      margin-bottom: 2rem;
+      transition: top 0.4s ease-in-out;
     }
+    .mobile-menu.show { top: 60px; }
+    .mobile-menu ul { list-style: none; padding: 1rem 0; }
+    .mobile-menu ul li { margin: 1rem 0; }
+    .mobile-menu ul li a { color: white; font-size: 1.1rem; font-weight: bold; }
 
+    /* === Hero Section === */
+    .hero {
+      background: url('images/home_hero.jpg') center/cover no-repeat;
+      height: 40vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-card {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 2rem;
+      max-width: 600px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: heroFadeUp 1.2s ease forwards;
+    }
+    @keyframes heroFadeUp { to { opacity: 1; transform: translateY(0); } }
+    .hero-card h2 { color: #007b5e; margin-bottom: 1rem; }
+
+    /* === Contact Section === */
+    .contact {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    .contact h3 { color: #007b5e; margin-bottom: 1rem; }
+    .contact p { margin-bottom: 1rem; }
+
+    /* Facebook Button */
     .facebook-btn {
       display: inline-block;
       background: #1877f2;
       color: white;
-      font-size: 1.2rem;
       font-weight: bold;
-      text-decoration: none;
       padding: 0.8rem 1.5rem;
       border-radius: 8px;
       position: relative;
-      transition: background 0.3s ease;
+      overflow: hidden;
+      transition: transform 0.3s, background 0.3s;
     }
-
-    .facebook-btn::before {
-      content: "f";
-      font-family: Arial, sans-serif;
-      font-weight: bold;
+    .facebook-btn::after {
+      content: '';
       position: absolute;
-      left: -25px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: white;
-      color: #1877f2;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 28px;
-      font-size: 1.2rem;
+      top: 0;
+      right: -20px;
+      width: 40px;
+      height: 100%;
+      background: rgba(255,255,255,0.2);
+      transform: skewX(-20deg);
     }
-
     .facebook-btn:hover {
-      background: #0f5cc1;
+      background: #145dbf;
+      transform: scale(1.05);
     }
 
-    .contact-form {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      max-width: 600px;
-      margin: 2rem auto;
+    /* === Form === */
+    form {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-
-    .contact-form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
-      width: 100%;
+    input, select, textarea {
       padding: 0.8rem;
-      margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 6px;
+      font-size: 1rem;
+      transition: border 0.3s, box-shadow 0.3s;
     }
-
-    .contact-form button {
+    input:focus, select:focus, textarea:focus {
+      border: 1px solid #007b5e;
+      box-shadow: 0 0 5px rgba(0,123,94,0.4);
+      outline: none;
+    }
+    button {
       background: #007b5e;
       color: white;
+      padding: 0.8rem;
       border: none;
-      padding: 0.8rem 1.5rem;
       border-radius: 6px;
-      cursor: pointer;
       font-size: 1rem;
-      transition: background 0.3s ease;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    button:hover {
+      background: #005f46;
+      transform: scale(1.05);
     }
 
-    .contact-form button:hover {
-      background: #005640;
+    /* === Footer === */
+    footer {
+      background: #007b5e;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hamburger { display: flex; }
     }
   </style>
 </head>
 <body>
   <!-- Header -->
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <div class="brand">
-        <a href="index.html">Kenya Kids Ry</a>
-        <small>Founded 2012 • Katja Maria</small>
-      </div>
-      <nav class="desktop-nav">
-        <ul class="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="success.html">Success Stories</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
-        </ul>
-      </nav>
-      <!-- Hamburger -->
-      <button class="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-    <!-- Mobile Menu -->
-    <nav class="mobile-menu">
+  <header>
+    <h1>Kenya Kids Ry <small>Founded 2012 • Katja Maria</small></h1>
+    <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="success.html">Success Stories</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <div class="hamburger"><span></span><span></span><span></span></div>
   </header>
 
-  <!-- Contact Section -->
-  <main class="contact-section">
-    <div class="container">
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="success.html">Success Stories</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-card">
       <h2>Get in Touch</h2>
-
-      <!-- Facebook Button -->
-      <div style="text-align:center; margin-bottom:2rem;">
-        <a href="https://www.facebook.com/YOUR_PAGE_LINK" target="_blank" class="facebook-btn">
-          Visit us on Facebook
-        </a>
-      </div>
-
-      <!-- Contact Form -->
-      <form class="contact-form" action="#" method="post">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="program">Program to Support</label>
-        <select id="program" name="program" required>
-          <option value="">-- Select a Program --</option>
-          <option value="education">Education</option>
-          <option value="healthcare">Healthcare</option>
-          <option value="nutrition">Nutrition</option>
-          <option value="rehabilitation">Rehabilitation</option>
-        </select>
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="4"></textarea>
-
-        <button type="submit">Send Request</button>
-      </form>
+      <p>Connect with us, support a program, or learn more about Kenya Kids Ry.</p>
     </div>
-  </main>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <h3>Follow & Support</h3>
+    <p>Stay connected with us on Facebook:</p>
+    <a href="https://www.facebook.com/yourpage" target="_blank" class="facebook-btn">Follow us on Facebook</a>
+
+    <h3>Request to Support a Program</h3>
+    <form action="#" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <select name="program" required>
+        <option value="">-- Select a Program --</option>
+        <option value="education">Education</option>
+        <option value="healthcare">Healthcare</option>
+        <option value="rehabilitation">Rehabilitation</option>
+        <option value="community">Community Outreach</option>
+      </select>
+      <textarea name="message" rows="4" placeholder="Your Message"></textarea>
+      <button type="submit">Send Request</button>
+    </form>
+  </section>
 
   <!-- Footer -->
-  <footer class="site-footer">
-    <p>© 2012 - 2025 Kenya Kids Ry. All rights reserved.</p>
+  <footer>
+    <p>&copy; 2025 Kenya Kids Ry. All rights reserved.</p>
   </footer>
+
+  <!-- Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.querySelector(".hamburger");
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("show");
+      });
+    });
+  </script>
 </body>
 </html>
