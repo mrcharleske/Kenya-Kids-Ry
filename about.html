@@ -1,86 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - Kenya Kids Ry</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <script defer src="js/main.js"></script>
+  <style>
+    /* === Base Reset === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    a { text-decoration: none; color: inherit; }
+
+    /* === Header / Nav === */
+    header {
+      background: #007b5e;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 { font-size: 1.2rem; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav ul li a { color: white; font-weight: bold; transition: color 0.3s; }
+    nav ul li a:hover { color: #ffe600; }
+
+    /* === Hamburger === */
+    .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 25px; height: 18px; cursor: pointer; }
+    .hamburger span { display: block; height: 3px; width: 100%; background: white; border-radius: 2px; transition: all 0.3s ease; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+
+    /* === Mobile Menu === */
+    .mobile-menu {
+      background: #007b5e;
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      transition: top 0.4s ease-in-out;
+    }
+    .mobile-menu.show { top: 60px; }
+    .mobile-menu ul { list-style: none; padding: 1rem 0; }
+    .mobile-menu ul li { margin: 1rem 0; }
+    .mobile-menu ul li a { color: white; font-size: 1.1rem; font-weight: bold; }
+
+    /* === Hero Section === */
+    .hero {
+      background: url('images/about_kidsry.jpg') center/cover no-repeat;
+      height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero-card {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 2rem;
+      max-width: 600px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: heroFadeUp 1.2s ease forwards;
+    }
+    @keyframes heroFadeUp { to { opacity: 1; transform: translateY(0); } }
+    .hero-card h2 { margin-bottom: 1rem; color: #007b5e; }
+
+    /* === About Section === */
+    .about {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .about img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: scale(0.9);
+      animation: fadeZoom 1s ease forwards;
+    }
+    @keyframes fadeZoom { to { opacity: 1; transform: scale(1); } }
+    .about-text {
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideIn 1.2s ease forwards;
+      animation-delay: 0.3s;
+    }
+    @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+    .about-text h3 { color: #007b5e; margin-bottom: 1rem; }
+
+    /* === Footer === */
+    footer {
+      background: #007b5e;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+      .about { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <div class="brand">
-        <a href="index.html">Kenya Kids Ry</a>
-        <small>Founded 2012 • Katja Maria</small>
-      </div>
-      <nav class="desktop-nav">
-        <ul class="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="success.html">Success Stories</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <!-- Hamburger -->
-      <button class="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-    <!-- Mobile Menu -->
-    <nav class="mobile-menu">
+  <header>
+    <h1>Kenya Kids Ry <small>Founded 2012 • Katja Maria</small></h1>
+    <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="success.html">Success Stories</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
 
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="success.html">Success Stories</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-card">
+      <h2>About Kenya Kids Ry</h2>
+      <p>Founded in 2012 by Katja Maria, Kenya Kids Ry is dedicated to transforming the lives of vulnerable children through education, healthcare, and community support.</p>
+    </div>
+  </section>
+
   <!-- About Section -->
-  <main>
-    <section class="intro">
-      <div class="container">
-        <h2>About Kenya Kids Ry</h2>
-        <p>
-          Founded in 2012 by <strong>Katja Maria</strong>, Kenya Kids Ry is a
-          non-profit organization dedicated to improving the lives of children
-          in Kenya. We believe every child deserves care, education, and the
-          chance for a brighter future.
-        </p>
-      </div>
-    </section>
+  <section class="about">
+    <div class="about-text">
+      <h3>Meet Katja Maria</h3>
+      <p>Katja Maria, the visionary behind Kenya Kids Ry, believed that every child deserves love, dignity, and opportunity. Since 2012, her mission has been to empower children and build stronger communities.</p>
+    </div>
+    <div>
+      <img src="images/about_katja.jpg" alt="Katja Maria">
+    </div>
+  </section>
 
-    <section class="highlights container grid-3">
-      <div class="card">
-        <img src="images/about_katja.jpg" alt="Founder Katja Maria" style="width:100%; border-radius:10px; margin-bottom:1rem;">
-        <h3>Our Founder</h3>
-        <p>
-          Katja Maria began this journey with compassion and determination.
-          Her vision was to create an organization that brings hope,
-          opportunity, and dignity to children who need it most.
-        </p>
-      </div>
-
-      <div class="card">
-        <img src="images/about_kidsry.jpg" alt="Kenya Kids Ry team" style="width:100%; border-radius:10px; margin-bottom:1rem;">
-        <h3>Our Mission</h3>
-        <p>
-          Kenya Kids Ry works through local partnerships and community
-          engagement to deliver healthcare, education, and rehabilitation
-          services for children, making lasting impacts.
-        </p>
-      </div>
-    </section>
-  </main>
+  <section class="about">
+    <div>
+      <img src="images/about_kidsry.jpg" alt="Kenya Kids Ry Work">
+    </div>
+    <div class="about-text">
+      <h3>Our Work</h3>
+      <p>Kenya Kids Ry partners with local communities to provide education, healthcare, and rehabilitation services. Together, we create hope, inspire change, and build a brighter future for children.</p>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="site-footer">
-    <p>© 2012 - 2025 Kenya Kids Ry. All rights reserved.</p>
+  <footer>
+    <p>&copy; 2025 Kenya Kids Ry. All rights reserved.</p>
   </footer>
+
+  <!-- Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.querySelector(".hamburger");
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("show");
+      });
+    });
+  </script>
 </body>
 </html>
