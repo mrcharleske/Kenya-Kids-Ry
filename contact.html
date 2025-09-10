@@ -4,80 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Kenya Kids Ry</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
-    /* Reset */
-.hero-plain {
-  background: linear-gradient(180deg, rgba(106,17,203,0.06), rgba(74,168,255,0.02));
-  padding: 3.5rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-box {
-  background: rgba(255,255,255,0.94);
-  padding: 1rem 1.6rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-  animation: fadeUp .9s ease both;
-}
-.hero-box h1 {
-  font-size: 2.2rem;
-  letter-spacing: 2px;
-  color: #6a11cb; /* accent color */
-  margin: 0;
-  text-align:center;
-}
-    /* Navbar */
-    header {
-      background: linear-gradient(90deg, #007b5e, #6a11cb);
-      color: white;
-      padding: 1rem 2rem; 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    header .logo { font-size: 1.4rem; font-weight: bold; }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    nav ul li a { color: white; font-weight: 500; transition: color 0.3s ease; }
-    nav ul li a:hover { color: #f9d342; }
-
-    /* Hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger div { width: 25px; height: 3px; background: white; }
-
-    /* Mobile Menu */
-    .mobile-menu {
-      position: absolute;
-      top: -220px; left: 0; width: 100%;
-      background: #007b5e;
-      text-align: center;
-      transition: top 0.4s ease-in-out;
-    }
-    .mobile-menu ul { list-style: none; padding: 1rem; }
-    .mobile-menu ul li { margin: 1rem 0; }
-    .mobile-menu ul li a { color: white; font-size: 1.2rem; }
-    .mobile-menu.show { top: 70px; }
-
     /* Hero */
     .hero {
-      position: relative;
-      height: 40vh;
+      height: 50vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: white;
+      background: linear-gradient(135deg, #007b5e, #6a11cb);
     }
-    .hero::before {
-      <!-- hero for ABOUT-->
-<section class="hero-plain">
-  <div class="hero-box">
-    <h1>ABOUT</h1>  
-  </div>
-</section>
+    .hero-box {
+      background: white;
+      padding: 1.5rem 3rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: pulse 2s infinite ease-in-out;
+    }
+    .hero-box h1 {
+      font-size: 2.5rem;
+      color: #007b5e;
     }
 
     /* Contact Section */
@@ -95,13 +42,27 @@
       margin-bottom: 1.5rem;
       color: #007b5e;
     }
-    form { display: flex; flex-direction: column; gap: 1rem; }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    label {
+      font-size: 0.9rem;
+      color: #333;
+      margin-bottom: 0.2rem;
+    }
     input, textarea, select {
       padding: 0.8rem;
-      border- 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
       width: 100%;
     }
-    textarea { resize: vertical; min-height: 100px; }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
     button {
       padding: 0.8rem;
       border: none;
@@ -133,31 +94,9 @@
       transform: scale(1.05);
       background: #145dbf;
     }
-
-    /* Footer */
-    footer {
-      background: linear-gradient(90deg, #6a11cb, #007b5e);
-      text-align: center;
-      padding: 1rem;
-      color: white;
-      margin-top: 2rem;
-    }
-
-    /* Animations */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsive */
-    @media(max-width: 768px) {
-      nav ul { display: none; }
-      .hamburger { display: flex; }
-    }
   </style>
 </head>
 <body>
-
   <!-- Navbar -->
   <header>
     <div class="logo">Kenya Kids Ry</div>
@@ -184,23 +123,29 @@
 
   <!-- Hero -->
   <section class="hero">
-    <h1>Contact Us</h1>
+    <div class="hero-box">
+      <h1>Contact Us</h1>
+    </div>
   </section>
 
   <!-- Contact Section -->
   <section class="contact-section">
     <h2>We’d love to hear from you</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <select required>
-        <option value="">Select Program to Support</option>
+    <form id="contact-form">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="Your Name" required>
+      <label for="email">Your Email</label>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <label for="program">Select Program to Support</label>
+      <select id="program" required>
+        <option value="">Select Program</option>
         <option value="healthcare">Healthcare</option>
         <option value="education">Education</option>
         <option value="rehabilitation">Rehabilitation</option>
         <option value="community">Community Outreach</option>
       </select>
-      <textarea placeholder="Your Message"></textarea>
+      <label for="message">Your Message</label>
+      <textarea id="message" placeholder="Your Message"></textarea>
       <button type="submit">Send Message</button>
     </form>
 
@@ -219,10 +164,43 @@
     // Hamburger menu toggle
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = mobileMenu.querySelectorAll('a');
+
     hamburger.addEventListener('click', () => {
       mobileMenu.classList.toggle('show');
+      hamburger.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+        hamburger.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        mobileMenu.classList.remove('show');
+        hamburger.classList.remove('active');
+      }
+    });
+
+    // Form submission handling
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const program = document.getElementById('program').value;
+      const message = document.getElementById('message').value;
+
+      // Simulate form submission (replace with actual backend logic)
+      console.log('Form Submitted:', { name, email, program, message });
+      alert('Thank you for your message! We will get back to you soon.');
+      form.reset();
     });
   </script>
-
 </body>
 </html>
