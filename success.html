@@ -5,139 +5,138 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Success Stories - Kenya Kids Ry</title>
   <style>
-    /* === Base Reset === */
+    /* Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
-    a { text-decoration: none; color: inherit; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #fafafa; color: #333; line-height: 1.6; }
 
-    /* === Header / Nav === */
+    a { text-decoration: none; }
+
+    /* Navbar */
     header {
-      background: #007b5e;
+      background: linear-gradient(90deg, #007b5e, #6a11cb);
       color: white;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-    header h1 { font-size: 1.2rem; }
+    header .logo { font-size: 1.4rem; font-weight: bold; }
     nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    nav ul li a { color: white; font-weight: bold; transition: color 0.3s; }
-    nav ul li a:hover { color: #ffe600; }
+    nav ul li a { color: white; font-weight: 500; transition: color 0.3s ease; }
+    nav ul li a:hover { color: #f9d342; }
 
-    /* === Hamburger === */
-    .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 25px; height: 18px; cursor: pointer; }
-    .hamburger span { display: block; height: 3px; width: 100%; background: white; border-radius: 2px; transition: all 0.3s ease; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger div { width: 25px; height: 3px; background: white; }
 
-    /* === Mobile Menu === */
+    /* Mobile Menu */
     .mobile-menu {
-      background: #007b5e;
       position: absolute;
-      top: -100%;
-      left: 0;
-      width: 100%;
+      top: -220px; left: 0; width: 100%;
+      background: #007b5e;
       text-align: center;
       transition: top 0.4s ease-in-out;
     }
-    .mobile-menu.show { top: 60px; }
-    .mobile-menu ul { list-style: none; padding: 1rem 0; }
+    .mobile-menu ul { list-style: none; padding: 1rem; }
     .mobile-menu ul li { margin: 1rem 0; }
-    .mobile-menu ul li a { color: white; font-size: 1.1rem; font-weight: bold; }
+    .mobile-menu ul li a { color: white; font-size: 1.2rem; }
+    .mobile-menu.show { top: 70px; }
 
-    /* === Hero Section === */
+    /* Hero */
     .hero {
-      background: url('images/success1_after.jpg') center/cover no-repeat;
-      height: 50vh;
+      position: relative;
+      height: 45vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-    }
-    .hero-card {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 2rem;
-      max-width: 700px;
+      justify-content: center;
       text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      color: white;
+    }
+    .hero::before {
+      content: "";
+      background: url('images/FB_IMG_1757424708818.jpg') center/cover no-repeat;
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      filter: blur(4px) brightness(0.6);
+      z-index: 1;
+    }
+    .hero h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 2.5rem;
+      background: rgba(255,255,255,0.85);
+      color: #6a11cb;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      animation: fadeUp 1.2s ease;
+    }
+
+    /* Success Stories */
+    .story {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 3rem auto;
+      gap: 2rem;
+      padding: 0 1rem;
       opacity: 0;
       transform: translateY(40px);
-      animation: heroFadeUp 1.2s ease forwards;
+      transition: opacity 1s ease, transform 1s ease;
     }
-    @keyframes heroFadeUp { to { opacity: 1; transform: translateY(0); } }
-    .hero-card h2 { color: #007b5e; margin-bottom: 1rem; }
-
-    /* === Stories Grid === */
-    .stories {
-      padding: 2rem;
-      display: grid;
-      gap: 2rem;
-    }
-    .story-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      transition: transform 0.3s;
-    }
-    .story-card:hover {
-      transform: translateY(-5px);
-    }
+    .story.show { opacity: 1; transform: translateY(0); }
     .story-images {
       display: flex;
       flex-direction: column;
+      gap: 1rem;
+      flex: 1;
     }
     .story-images img {
       width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.4s ease;
-      opacity: 0;
-      transform: scale(0.9);
-      animation: fadeZoom 1s ease forwards;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
-    .story-images img:hover { transform: scale(1.05); }
-    @keyframes fadeZoom { to { opacity: 1; transform: scale(1); } }
-    .story-text {
-      padding: 1.5rem;
-      opacity: 0;
-      transform: translateX(30px);
-      animation: slideIn 1.2s ease forwards;
-      animation-delay: 0.3s;
-    }
-    @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
-    .story-text h3 { color: #007b5e; margin-bottom: 1rem; }
+    .story-text { flex: 1; }
+    .story-text h2 { color: #007b5e; margin-bottom: 1rem; }
+    .story-text p { margin-bottom: 1rem; }
 
-    /* === Footer === */
+    /* Alternate layout */
+    .reverse { flex-direction: row-reverse; }
+
+    /* Footer */
     footer {
-      background: #007b5e;
-      color: white;
+      background: linear-gradient(90deg, #6a11cb, #007b5e);
       text-align: center;
       padding: 1rem;
+      color: white;
       margin-top: 2rem;
     }
 
-    /* === Responsive === */
-    @media (max-width: 900px) {
-      .story-card { grid-template-columns: 1fr; }
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    @media (max-width: 768px) {
+
+    /* Responsive */
+    @media(max-width: 900px) {
+      .story, .reverse { flex-direction: column; text-align: center; }
+      .story-images img { max-width: 100%; }
+    }
+    @media(max-width: 768px) {
       nav ul { display: none; }
       .hamburger { display: flex; }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- Navbar -->
   <header>
-    <h1>Kenya Kids Ry <small>Founded 2012 • Katja Maria</small></h1>
+    <div class="logo">Kenya Kids Ry</div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -146,7 +145,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <div class="hamburger"><span></span><span></span><span></span></div>
+    <div class="hamburger"><div></div><div></div><div></div></div>
   </header>
 
   <!-- Mobile Menu -->
@@ -159,105 +158,108 @@
     </ul>
   </div>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="hero-card">
-      <h2>Success Stories</h2>
-      <p>Every child has a story. Here are some of the lives we’ve helped transform through care, education, and hope.</p>
+    <h1>Success Stories</h1>
+  </section>
+
+  <!-- Story 1 -->
+  <section class="story">
+    <div class="story-images">
+      <img src="images/FB_IMG_1757424708818.jpg" alt="Before Story 1">
+      <img src="images/Screenshot_20250909_170824_Facebook.jpg" alt="After Story 1">
+    </div>
+    <div class="story-text">
+      <h2>From Struggle to Confidence</h2>
+      <p>Once facing extreme hardship, this child found renewed hope through education and support. Today, they stand with confidence and a bright future ahead.</p>
     </div>
   </section>
 
-  <!-- Stories Section -->
-  <section class="stories">
-    <!-- Story 1 -->
-    <div class="story-card">
-      <div class="story-images">
-        <img src="images/success1_before.jpg" alt="Before Story 1">
-        <img src="images/success1_after.jpg" alt="After Story 1">
-      </div>
-      <div class="story-text">
-        <h3>From Struggles to Smiles</h3>
-        <p>Once facing challenges without proper care, this child is now thriving with education and a loving community. A journey of resilience and hope.</p>
-      </div>
+  <!-- Story 2 -->
+  <section class="story reverse">
+    <div class="story-images">
+      <img src="images/FB_IMG_1757424944048.jpg" alt="Before Story 2">
+      <img src="images/FB_IMG_1757427718947~2.jpg" alt="After Story 2">
     </div>
-
-    <!-- Story 2 -->
-    <div class="story-card">
-      <div class="story-images">
-        <img src="images/success2_before.jpg" alt="Before Story 2">
-        <img src="images/success2_after.jpg" alt="After Story 2">
-      </div>
-      <div class="story-text">
-        <h3>Healing and Growth</h3>
-        <p>From vulnerability to strength, this transformation shows the power of support and education in shaping a brighter future.</p>
-      </div>
+    <div class="story-text">
+      <h2>Healing Through Love</h2>
+      <p>Through consistent care and mentorship, this transformation showcases how compassion can restore dignity and self-worth in a child’s life.</p>
     </div>
+  </section>
 
-    <!-- Story 3 -->
-    <div class="story-card">
-      <div class="story-images">
-        <img src="images/success3_before.jpg" alt="Before Story 3">
-        <img src="images/success3_after.jpg" alt="After Story 3">
-      </div>
-      <div class="story-text">
-        <h3>Education Opens Doors</h3>
-        <p>Through education, this child has discovered confidence and opportunity — a true testament to the power of learning.</p>
-      </div>
+  <!-- Story 3 -->
+  <section class="story">
+    <div class="story-images">
+      <img src="images/FB_IMG_1757424970272.jpg" alt="Before Story 3">
+      <img src="images/FB_IMG_1757426548967.jpg" alt="After Story 3">
     </div>
-
-    <!-- Story 4 -->
-    <div class="story-card">
-      <div class="story-images">
-        <img src="images/success4_before.jpg" alt="Before Story 4">
-        <img src="images/success4_after.jpg" alt="After Story 4">
-      </div>
-      <div class="story-text">
-        <h3>A Brighter Tomorrow</h3>
-        <p>What once seemed impossible is now a reality — with love, care, and education, this child’s future is full of light.</p>
-      </div>
+    <div class="story-text">
+      <h2>From Fear to Freedom</h2>
+      <p>Overcoming trauma is never easy, but with encouragement and resources, this child now thrives in a safe, supportive environment.</p>
     </div>
+  </section>
 
-    <!-- Story 5 -->
-    <div class="story-card">
-      <div class="story-images">
-        <img src="images/success5_before.jpg" alt="Before Story 5">
-        <img src="images/success5_after.jpg" alt="After Story 5">
-      </div>
-      <div class="story-text">
-        <h3>Strength in Support</h3>
-        <p>With the right guidance and care, this journey shows how every child can overcome hardships and grow stronger.</p>
-      </div>
+  <!-- Story 4 -->
+  <section class="story reverse">
+    <div class="story-images">
+      <img src="images/FB_IMG_1757426160416.jpg" alt="Before Story 4">
+      <img src="images/FB_IMG_1757426118481.jpg" alt="After Story 4">
     </div>
+    <div class="story-text">
+      <h2>Education Unlocks Potential</h2>
+      <p>Given access to education, this child’s journey proves how learning opens doors to opportunities that were once unimaginable.</p>
+    </div>
+  </section>
 
-    <!-- Story 6 -->
-    <div class="story-card">
-      <div class="story-images">
-        <img src="images/success6_before.jpg" alt="Before Story 6">
-        <img src="images/success6_after.jpg" alt="After Story 6">
-      </div>
-      <div class="story-text">
-        <h3>Hope Restored</h3>
-        <p>From uncertainty to joy, this transformation proves that compassion and opportunity can change lives forever.</p>
-      </div>
+  <!-- Story 5 -->
+  <section class="story">
+    <div class="story-images">
+      <img src="images/FB_IMG_1757426428156.jpg" alt="Before Story 5">
+      <img src="images/FB_IMG_1757422915425.jpg" alt="After Story 5">
+    </div>
+    <div class="story-text">
+      <h2>Restoring Joy</h2>
+      <p>A once broken spirit now shines with happiness, proof that every child deserves the chance to laugh, learn, and dream again.</p>
+    </div>
+  </section>
+
+  <!-- Story 6 -->
+  <section class="story reverse">
+    <div class="story-images">
+      <img src="images/FB_IMG_1757427795718.jpg" alt="Before Story 6">
+      <img src="images/FB_IMG_1757427776264.jpg" alt="After Story 6">
+    </div>
+    <div class="story-text">
+      <h2>Building a Brighter Future</h2>
+      <p>With proper guidance and community support, this young life has been redirected towards hope, success, and endless possibilities.</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Kenya Kids Ry. All rights reserved.</p>
+    © 2025 Kenya Kids Ry | Founded by Katja Maria
   </footer>
 
   <!-- Script -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const hamburger = document.querySelector(".hamburger");
-      const mobileMenu = document.querySelector(".mobile-menu");
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('show');
+    });
 
-      hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        mobileMenu.classList.toggle("show");
+    // Fade-in on scroll
+    const stories = document.querySelectorAll('.story');
+    window.addEventListener('scroll', () => {
+      stories.forEach(story => {
+        const position = story.getBoundingClientRect().top;
+        if (position < window.innerHeight - 100) {
+          story.classList.add('show');
+        }
       });
     });
   </script>
+
 </body>
 </html>
