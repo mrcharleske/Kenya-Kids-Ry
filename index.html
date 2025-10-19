@@ -1,207 +1,788 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kenya Kids Ry, founded by Katja Maria, provides education, healthcare, and mentorship to children in Kenya since 2012.">
-  <meta name="keywords" content="Kenya Kids Ry, child education Kenya, humanitarian aid, Katja Maria">
-  <meta property="og:title" content="Kenya Kids Ry - Home">
-  <meta property="og:description" content="Inspiring hope and transforming lives for children in need.">
-  <meta property="og:image" content="images/FB_IMG_1757425934086.jpg">
-  <meta property="og:url" content="https://yourwebsite.com/">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Kenya Kids Ry",
-    "url": "https://yourwebsite.com/",
-    "founder": "Katja Maria",
-    "description": "Non-profit providing care and education to children in Kenya."
-  }
-  </script>
-  <title>Kenya Kids Ry - Home</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Hero */
-    .hero {
-      position: relative;
-      height: 50vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-    }
-    .hero::before {
-      content: "";
-      background: url('images/FB_IMG_1757425934086.jpg') center/cover no-repeat;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      filter: blur(4px) brightness(0.6);
-      z-index: 1;
-    }
-    .hero-card {
-      position: relative;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.9);
-      color: #333;
-      padding: 2rem;
-      border-radius: 15px;
-      max-width: 650px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      animation: fadeUp 1.2s ease;
-    }
-    .hero-card h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.8rem;
-      color: #007b5e;
-    }
-    .hero-card p {
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
-    }
-    .btn {
-      display: inline-block;
-      padding: 0.6rem 1.2rem;
-      margin: 0.5rem;
-      border-radius: 25px;
-      background: linear-gradient(90deg, #ff8c42, #f9d342);
-      color: #333;
-      font-weight: bold;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    }
-
-    /* Quote Section */
-    .quote {
-      text-align: center;
-      padding: 2rem;
-      font-size: 1.3rem;
-      color: #6a11cb;
-      font-style: italic;
-    }
-
-    /* Cards Section */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      max-width: 1100px;
-      margin: auto;
-      padding: 2rem;
-    }
-    .card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-    .card h3 {
-      color: #007b5e;
-      margin-bottom: 0.8rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenya Kids Ry - Auttamassa Kenialaisia Lapsia ja Perheitä</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
+        }
+        
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        
+        .success-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .success-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+        }
+        
+        .language-switcher {
+            position: relative;
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .language-dropdown.active {
+            display: block;
+        }
+    </style>
 </head>
-<body>
-  <!-- Navbar -->
-  <header>
-    <div class="logo">Kenya Kids Ry</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="success.html">Success Stories</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-blue-600">Kenya Kids Ry</h1>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" data-fi="Etusivu" data-en="Home">Etusivu</a>
+                        <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" data-fi="Meistä" data-en="About">Meistä</a>
+                        <a href="#programs" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" data-fi="Ohjelmat" data-en="Programs">Ohjelmat</a>
+                        <a href="#stories" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" data-fi="Tarinat" data-en="Stories">Tarinat</a>
+                        <a href="#impact" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" data-fi="Vaikutus" data-en="Impact">Vaikutus</a>
+                        <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" data-fi="Yhteystiedot" data-en="Contact">Yhteystiedot</a>
+                    </div>
+                </div>
+
+                <!-- Language Switcher & Mobile Menu Button -->
+                <div class="flex items-center space-x-4">
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <button id="languageBtn" class="flex items-center space-x-1 text-gray-700 hover:text-blue-600 transition-colors">
+                            <i class="fas fa-globe"></i>
+                            <span id="currentLang">FI</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div id="languageDropdown" class="language-dropdown">
+                            <button onclick="switchLanguage('fi')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-lg">🇫🇮 Suomi</button>
+                            <button onclick="switchLanguage('en')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-lg">🇬🇧 English</button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden">
+                        <button id="mobileMenuBtn" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="mobile-menu md:hidden fixed inset-y-0 left-0 w-64 bg-white shadow-xl z-50">
+            <div class="flex items-center justify-between p-4 border-b">
+                <h2 class="text-xl font-bold text-blue-600">Kenya Kids Ry</h2>
+                <button id="closeMobileMenu" class="text-gray-700 hover:text-blue-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="py-4">
+                <a href="#home" class="mobile-nav-link block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors" data-fi="Etusivu" data-en="Home">Etusivu</a>
+                <a href="#about" class="mobile-nav-link block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors" data-fi="Meistä" data-en="About">Meistä</a>
+                <a href="#programs" class="mobile-nav-link block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors" data-fi="Ohjelmat" data-en="Programs">Ohjelmat</a>
+                <a href="#stories" class="mobile-nav-link block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors" data-fi="Tarinat" data-en="Stories">Tarinat</a>
+                <a href="#impact" class="mobile-nav-link block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors" data-fi="Vaikutus" data-en="Impact">Vaikutus</a>
+                <a href="#contact" class="mobile-nav-link block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors" data-fi="Yhteystiedot" data-en="Contact">Yhteystiedot</a>
+            </div>
+        </div>
     </nav>
-    <div class="hamburger"><div></div><div></div><div></div></div>
-  </header>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="success.html">Success Stories</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg hero-pattern min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="hero-title text-4xl md:text-6xl font-bold mb-6" data-fi="Muuttamassa Elämää Keniassa" data-en="Transforming Lives in Kenya">Muuttamassa Elämää Keniassa</h1>
+                <p class="hero-subtitle text-xl md:text-2xl mb-8 max-w-3xl mx-auto" data-fi="Vuodesta 2012 lähtien olemme tukeneet kenialaisia lapsia ja perheitä koulutuksen, hyvinvoinnin ja yhteisöhankkeiden kautta." data-en="Since 2012, we have been supporting Kenyan children and families through education, welfare, and community projects.">Vuodesta 2012 lähtien olemme tukeneet kenialaisia lapsia ja perheitä koulutuksen, hyvinvoinnin ja yhteisöhankkeiden kautta.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg" data-fi="Lahjoita Nyt" data-en="Donate Now">Lahjoita Nyt</button>
+                    <button class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors" data-fi="Lue Lisää" data-en="Learn More">Lue Lisää</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-card">
-      <h1>Inspiring Hope, Transforming Lives</h1>
-      <p>Since 2012, Kenya Kids Ry has been working tirelessly to bring care, education, and brighter futures to children in need. Founded by Katja Maria, we believe that every child deserves love, dignity, and the chance to thrive.</p>
-      <a href="about.html" class="btn">Learn More</a>
-      <a href="success.html" class="btn">Our Success Stories</a>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="about-title text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-fi="Tarinaamme" data-en="Our Story">Tarinaamme</h2>
+                <p class="about-subtitle text-xl text-gray-600 max-w-3xl mx-auto" data-fi="Kenya Kids Ry perustettiin vuonna 2012 Katja Marian toimesta auttamaan kenialaisia lapsia ja perheitä." data-en="Kenya Kids Ry was founded in 2012 by Katja Maria to help Kenyan children and families.">Kenya Kids Ry perustettiin vuonna 2012 Katja Marian toimesta auttamaan kenialaisia lapsia ja perheitä.</p>
+            </div>
 
-  <!-- Quote -->
-  <div class="quote">
-    “Education is the most powerful weapon which you can use to change the world.” — Nelson Mandela
-  </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <div class="bg-gray-300 h-96 rounded-lg flex items-center justify-center">
+                        <div class="text-center text-gray-600">
+                            <i class="fas fa-image text-6xl mb-4"></i>
+                            <p class="founder-image-placeholder" data-fi="Katja Marian kuva" data-en="Katja Maria's Photo">Katja Marian kuva</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <h3 class="founder-story-title text-2xl font-bold text-gray-900 mb-6" data-fi="Perustajan Tarina" data-en="Founder's Story">Perustajan Tarina</h3>
+                    <p class="founder-story-text text-gray-700 mb-6 leading-relaxed" data-fi="Vuonna 2012 Katja Maria perusti Kenya Kids Ry:n nähdessään kenialaisten lasten ja perheiden tarpeen. Hänen visionsa oli luoda kestävä tuki, joka auttaisi yhteisöjä kasvamaan ja kukoistamaan." data-en="In 2012, Katja Maria founded Kenya Kids Ry after witnessing the needs of Kenyan children and families. Her vision was to create sustainable support that would help communities grow and thrive.">Vuonna 2012 Katja Maria perusti Kenya Kids Ry:n nähdessään kenialaisten lasten ja perheiden tarpeen. Hänen visionsa oli luoda kestävä tuki, joka auttaisi yhteisöjä kasvamaan ja kukoistamaan.</p>
+                    <p class="mission-text text-gray-700 leading-relaxed" data-fi="Meidän tehtävämme on tarjota kokonaisvaltaista tukea koulutuksen, hyvinvoinnin, yhteisöhankkeiden ja voimaannuttamisen kautta." data-en="Our mission is to provide comprehensive support through education, welfare, community projects, and empowerment.">Meidän tehtävämme on tarjota kokonaisvaltaista tukea koulutuksen, hyvinvoinnin, yhteisöhankkeiden ja voimaannuttamisen kautta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Cards -->
-  <section class="cards">
-    <div class="card">
-      <h3>Education</h3>
-      <p>Through school programs and mentorship, we ensure every child has the opportunity to learn and succeed.</p>
-    </div>
-    <div class="card">
-      <h3>CommunityCare</h3>
-      <p>We provide healthcare and outreach support that ensures children grow up safe, healthy, and strong.</p>
-    </div>
-    <div class="card">
-      <h3>Success Stories</h3>
-      <p>From hardship to hope — discover the incredible journeys of children whose lives have been transformed.</p>
-    </div>
-  </section>
+    <!-- Programs Section -->
+    <section id="programs" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="programs-title text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-fi="Ohjelmamme" data-en="Our Programs">Ohjelmamme</h2>
+                <p class="programs-subtitle text-xl text-gray-600 max-w-3xl mx-auto" data-fi="Neljä pääaluetta, joilla teemme merkittävää eroa kenialaisten yhteisöjen elämässä." data-en="Four main areas where we make a significant difference in Kenyan communities.">Neljä pääaluetta, joilla teemme merkittävää eroa kenialaisten yhteisöjen elämässä.</p>
+            </div>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 Kenya Kids Ry | 
-  </footer>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Academic Sponsorship -->
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-graduation-cap text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="academic-title text-xl font-bold text-gray-900 mb-3" data-fi="Koulutustuki" data-en="Academic Sponsorship">Koulutustuki</h3>
+                    <p class="academic-desc text-gray-600" data-fi="Sponsoroimme vähävaraisia opiskelijoita tarjoamalla heille mahdollisuuden saada laadukasta koulutusta." data-en="We sponsor needy students by providing them with opportunities for quality education.">Sponsoroimme vähävaraisia opiskelijoita tarjoamalla heille mahdollisuuden saada laadukasta koulutusta.</p>
+                </div>
 
-  <!-- Script -->
-  <script>
-    // Hamburger menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = mobileMenu.querySelectorAll('a');
+                <!-- Family Welfare -->
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="welfare-title text-xl font-bold text-gray-900 mb-3" data-fi="Perheiden Hyvinvointi" data-en="Family Welfare">Perheiden Hyvinvointi</h3>
+                    <p class="welfare-desc text-gray-600" data-fi="Tarjoamme hyvinvointitukea vähävaraisille perheille heidän perustarpeisiinsa." data-en="We provide welfare support to needy families for their basic needs.">Tarjoamme hyvinvointitukea vähävaraisille perheille heidän perustarpeisiinsa.</p>
+                </div>
 
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('show');
-      hamburger.classList.toggle('active');
-    });
+                <!-- Community Projects -->
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="community-title text-xl font-bold text-gray-900 mb-3" data-fi="Yhteisöhankkeet" data-en="Community Projects">Yhteisöhankkeet</h3>
+                    <p class="community-desc text-gray-600" data-fi="Toteutamme yhteisöhankkeita, jotka parantavat koko yhteisön elämänlaatua." data-en="We implement community projects that improve the quality of life for entire communities.">Toteutamme yhteisöhankkeita, jotka parantavat koko yhteisön elämänlaatua.</p>
+                </div>
 
-    // Close menu when a link is clicked
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('show');
-        hamburger.classList.remove('active');
-      });
-    });
+                <!-- Empowerment -->
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-rocket text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="empowerment-title text-xl font-bold text-gray-900 mb-3" data-fi="Voimaannuttaminen" data-en="Empowerment">Voimaannuttaminen</h3>
+                    <p class="empowerment-desc text-gray-600" data-fi="Voimaannutamme yksilöitä ja yhteisöjä rakentamaan kestävää tulevaisuutta." data-en="We empower individuals and communities to build a sustainable future.">Voimaannutamme yksilöitä ja yhteisöjä rakentamaan kestävää tulevaisuutta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        mobileMenu.classList.remove('show');
-        hamburger.classList.remove('active');
-      }
-    });
-  </script>
-</body>
+    <!-- Success Stories Section -->
+    <section id="stories" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="stories-title text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-fi="Menestystarinat" data-en="Success Stories">Menestystarinat</h2>
+                <p class="stories-subtitle text-xl text-gray-600 max-w-3xl mx-auto" data-fi="Katso kuinka Kenya Kids Ry on muuttanut elämää - ennen ja jälkeen puuttumisemme." data-en="See how Kenya Kids Ry has transformed lives - before and after our intervention.">Katso kuinka Kenya Kids Ry on muuttanut elämää - ennen ja jälkeen puuttumisemme.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Story 1 -->
+                <div class="success-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="grid grid-cols-2 h-48">
+                        <div class="bg-red-100 flex items-center justify-center">
+                            <div class="text-center text-red-600">
+                                <i class="fas fa-image text-3xl mb-2"></i>
+                                <p class="text-sm before-text" data-fi="Ennen" data-en="Before">Ennen</p>
+                            </div>
+                        </div>
+                        <div class="bg-green-100 flex items-center justify-center">
+                            <div class="text-center text-green-600">
+                                <i class="fas fa-image text-3xl mb-2"></i>
+                                <p class="text-sm after-text" data-fi="Jälkeen" data-en="After">Jälkeen</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="story1-title text-xl font-bold text-gray-900 mb-3" data-fi="Marian Koulutusmatka" data-en="Maria's Educational Journey">Marian Koulutusmatka</h3>
+                        <p class="story1-desc text-gray-600" data-fi="Maria oli kouluton lapsi, joka nyt opiskelee yliopistossa meidän tukemme ansiosta." data-en="Maria was an out-of-school child who is now studying at university thanks to our support.">Maria oli kouluton lapsi, joka nyt opiskelee yliopistossa meidän tukemme ansiosta.</p>
+                    </div>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="success-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid grid-cols-2 h-48">
+                        <div class="bg-red-100 flex items-center justify-center">
+                            <div class="text-center text-red-600">
+                                <i class="fas fa-image text-3xl mb-2"></i>
+                                <p class="text-sm before-text" data-fi="Ennen" data-en="Before">Ennen</p>
+                            </div>
+                        </div>
+                        <div class="bg-green-100 flex items-center justify-center">
+                            <div class="text-center text-green-600">
+                                <i class="fas fa-image text-3xl mb-2"></i>
+                                <p class="text-sm after-text" data-fi="Jälkeen" data-en="After">Jälkeen</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="story2-title text-xl font-bold text-gray-900 mb-3" data-fi="Kibera Yhteisöhanke" data-en="Kibera Community Project">Kibera Yhteisöhanke</h3>
+                        <p class="story2-desc text-gray-600" data-fi="Kibera-slummi sai puhtaan veden ja sanitaation meidän yhteisöhankkeemme kautta." data-en="Kibera slum received clean water and sanitation through our community project.">Kibera-slummi sai puhtaan veden ja sanitaation meidän yhteisöhankkeemme kautta.</p>
+                    </div>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="success-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="grid grid-cols-2 h-48">
+                        <div class="bg-red-100 flex items-center justify-center">
+                            <div class="text-center text-red-600">
+                                <i class="fas fa-image text-3xl mb-2"></i>
+                                <p class="text-sm before-text" data-fi="Ennen" data-en="Before">Ennen</p>
+                            </div>
+                        </div>
+                        <div class="bg-green-100 flex items-center justify-center">
+                            <div class="text-center text-green-600">
+                                <i class="fas fa-image text-3xl mb-2"></i>
+                                <p class="text-sm after-text" data-fi="Jälkeen" data-en="After">Jälkeen</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="story3-title text-xl font-bold text-gray-900 mb-3" data-fi="Perheen Voimaannuttaminen" data-en="Family Empowerment">Perheen Voimaannuttaminen</h3>
+                        <p class="story3-desc text-gray-600" data-fi="Wanjiku-perhe aloitti oman yrityksen meidän voimaannuttamisohjelmamme kautta." data-en="The Wanjiku family started their own business through our empowerment program.">Wanjiku-perhe aloitti oman yrityksen meidän voimaannuttamisohjelmamme kautta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Statistics -->
+    <section id="impact" class="py-20 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="impact-title text-3xl md:text-4xl font-bold mb-4" data-fi="Meidän Vaikutuksemme" data-en="Our Impact">Meidän Vaikutuksemme</h2>
+                <p class="impact-subtitle text-xl max-w-3xl mx-auto" data-fi="Vuodesta 2012 lähtien olemme tehneet merkittävää eroa kenialaisten yhteisöjen elämässä." data-en="Since 2012, we have made a significant difference in Kenyan communities.">Vuodesta 2012 lähtien olemme tehneet merkittävää eroa kenialaisten yhteisöjen elämässä.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="counter" id="studentsCounter">0</div>
+                    <p class="students-label text-lg" data-fi="Tuettua Opiskelijaa" data-en="Students Supported">Tuettua Opiskelijaa</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="counter" id="familiesCounter">0</div>
+                    <p class="families-label text-lg" data-fi="Autettua Perhettä" data-en="Families Helped">Autettua Perhettä</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="counter" id="projectsCounter">0</div>
+                    <p class="projects-label text-lg" data-fi="Yhteisöhanketta" data-en="Community Projects">Yhteisöhanketta</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="counter" id="yearsCounter">0</div>
+                    <p class="years-label text-lg" data-fi="Vuotta Toimintaa" data-en="Years of Operation">Vuotta Toimintaa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="involved-title text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-fi="Osallistu Mukaan" data-en="Get Involved">Osallistu Mukaan</h2>
+                <p class="involved-subtitle text-xl text-gray-600 max-w-3xl mx-auto" data-fi="On monia tapoja, joilla voit auttaa meitä muuttamaan elämää Keniassa." data-en="There are many ways you can help us transform lives in Kenya.">On monia tapoja, joilla voit auttaa meitä muuttamaan elämää Keniassa.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hand-holding-heart text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="donate-title text-xl font-bold text-gray-900 mb-4" data-fi="Lahjoita" data-en="Donate">Lahjoita</h3>
+                    <p class="donate-desc text-gray-600 mb-6" data-fi="Tee kertalahjoitus tai kuukausilahjoitus tukeaksesi työtämme." data-en="Make a one-time or monthly donation to support our work.">Tee kertalahjoitus tai kuukausilahjoitus tukeaksesi työtämme.</p>
+                    <button class="btn-primary text-white px-6 py-3 rounded-lg font-semibold" data-fi="Lahjoita Nyt" data-en="Donate Now">Lahjoita Nyt</button>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hands-helping text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="volunteer-title text-xl font-bold text-gray-900 mb-4" data-fi="Vapaaehtoistyö" data-en="Volunteer">Vapaaehtoistyö</h3>
+                    <p class="volunteer-desc text-gray-600 mb-6" data-fi="Liity vapaaehtoistiimiimme ja tee ero omilla taidoillasi." data-en="Join our volunteer team and make a difference with your skills.">Liity vapaaehtoistiimiimme ja tee ero omilla taidoillasi.</p>
+                    <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors" data-fi="Liity Mukaan" data-en="Join Us">Liity Mukaan</button>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-share-alt text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="spread-title text-xl font-bold text-gray-900 mb-4" data-fi="Levitä Sanaa" data-en="Spread the Word">Levitä Sanaa</h3>
+                    <p class="spread-desc text-gray-600 mb-6" data-fi="Jaa tarinaamme sosiaalisessa mediassa ja kerro ystävillesi." data-en="Share our story on social media and tell your friends.">Jaa tarinaamme sosiaalisessa mediassa ja kerro ystävillesi.</p>
+                    <button class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors" data-fi="Jaa Nyt" data-en="Share Now">Jaa Nyt</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="testimonials-title text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-fi="Mitä Ihmiset Sanovat" data-en="What People Say">Mitä Ihmiset Sanovat</h2>
+                <p class="testimonials-subtitle text-xl text-gray-600 max-w-3xl mx-auto" data-fi="Kuule suoraan niiltä, joiden elämää olemme koskettaneet." data-en="Hear directly from those whose lives we have touched.">Kuule suoraan niiltä, joiden elämää olemme koskettaneet.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-300 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Sarah Wanjiku</h4>
+                            <p class="text-gray-600 text-sm" data-fi="Tuettu Opiskelija" data-en="Supported Student">Tuettu Opiskelija</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic testimonial1-text" data-fi="'Kenya Kids Ry muutti elämäni. Ilman heidän tukeaan en olisi koskaan päässyt yliopistoon.'" data-en="'Kenya Kids Ry changed my life. Without their support, I would never have made it to university.'">"Kenya Kids Ry muutti elämäni. Ilman heidän tukeaan en olisi koskaan päässyt yliopistoon."</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-300 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">James Mwangi</h4>
+                            <p class="text-gray-600 text-sm" data-fi="Yhteisön Johtaja" data-en="Community Leader">Yhteisön Johtaja</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic testimonial2-text" data-fi="'Heidän yhteisöhankkeensa toivat puhtaan veden kyläämme. Olemme ikuisesti kiitollisia.'" data-en="'Their community projects brought clean water to our village. We are forever grateful.'">"Heidän yhteisöhankkeensa toivat puhtaan veden kyläämme. Olemme ikuisesti kiitollisia."</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-300 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Anna Virtanen</h4>
+                            <p class="text-gray-600 text-sm" data-fi="Vapaaehtoinen" data-en="Volunteer">Vapaaehtoinen</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic testimonial3-text" data-fi="'Työskentely Kenya Kids Ry:n kanssa on ollut elämäni palkitsevinta aikaa.'" data-en="'Working with Kenya Kids Ry has been the most rewarding time of my life.'">"Työskentely Kenya Kids Ry:n kanssa on ollut elämäni palkitsevinta aikaa."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+            <h2 class="newsletter-title text-3xl md:text-4xl font-bold mb-4" data-fi="Pysy Ajan Tasalla" data-en="Stay Updated">Pysy Ajan Tasalla</h2>
+            <p class="newsletter-subtitle text-xl mb-8" data-fi="Tilaa uutiskirjeemme saadaksesi viimeisimmät päivitykset työstämme Keniassa." data-en="Subscribe to our newsletter to get the latest updates on our work in Kenya.">Tilaa uutiskirjeemme saadaksesi viimeisimmät päivitykset työstämme Keniassa.</p>
+            <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" onsubmit="subscribeNewsletter(event)">
+                <input type="email" placeholder="Sähköpostiosoitteesi" class="newsletter-input flex-1 px-4 py-3 rounded-lg text-gray-900" required data-fi-placeholder="Sähköpostiosoitteesi" data-en-placeholder="Your email address">
+                <button type="submit" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold newsletter-btn" data-fi="Tilaa" data-en="Subscribe">Tilaa</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Annual Report Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-lg shadow-lg p-8 md:p-12 text-center" data-aos="fade-up">
+                <h2 class="report-title text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-fi="Läpinäkyvyys ja Vastuullisuus" data-en="Transparency and Accountability">Läpinäkyvyys ja Vastuullisuus</h2>
+                <p class="report-subtitle text-xl text-gray-600 mb-8 max-w-3xl mx-auto" data-fi="Uskomme täydelliseen läpinäkyvyyteen. Lataa vuosiraporttimme nähdäksesi tarkalleen, miten lahjoituksesi käytetään." data-en="We believe in complete transparency. Download our annual report to see exactly how your donations are used.">Uskomme täydelliseen läpinäkyvyyteen. Lataa vuosiraporttimme nähdäksesi tarkalleen, miten lahjoituksesi käytetään.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors" data-fi="Lataa Vuosiraportti 2023" data-en="Download 2023 Annual Report">Lataa Vuosiraportti 2023</button>
+                    <button class="bg-gray-600 hover:bg-gray-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors" data-fi="Katso Taloustiedot" data-en="View Financial Information">Katso Taloustiedot</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="contact-title text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-fi="Ota Yhteyttä" data-en="Contact Us">Ota Yhteyttä</h2>
+                <p class="contact-subtitle text-xl text-gray-600 max-w-3xl mx-auto" data-fi="Haluatko tietää lisää työstämme tai osallistua mukaan? Otamme mielellämme yhteyttä!" data-en="Want to learn more about our work or get involved? We'd love to hear from you!">Haluatko tietää lisää työstämme tai osallistua mukaan? Otamme mielellämme yhteyttä!</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div data-aos="fade-right">
+                    <h3 class="contact-info-title text-2xl font-bold text-gray-900 mb-6" data-fi="Yhteystiedot" data-en="Contact Information">Yhteystiedot</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Email</p>
+                                <p class="text-gray-600">info@kenyakids.fi</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-green-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 location-label" data-fi="Sijainti" data-en="Location">Sijainti</p>
+                                <p class="text-gray-600 location-text" data-fi="Suomi & Kenia" data-en="Finland & Kenya">Suomi & Kenia</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-share-alt text-purple-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 social-label" data-fi="Sosiaalinen Media" data-en="Social Media">Sosiaalinen Media</p>
+                                <div class="flex space-x-3 mt-2">
+                                    <a href="#" class="text-blue-600 hover:text-blue-800 transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+                                    <a href="#" class="text-blue-400 hover:text-blue-600 transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                                    <a href="#" class="text-pink-600 hover:text-pink-800 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                                    <a href="#" class="text-blue-700 hover:text-blue-900 transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <form class="bg-white rounded-lg shadow-lg p-8" onsubmit="submitContactForm(event)">
+                        <h3 class="form-title text-2xl font-bold text-gray-900 mb-6" data-fi="Lähetä Viesti" data-en="Send Message">Lähetä Viesti</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="name" class="name-label block text-sm font-medium text-gray-700 mb-2" data-fi="Nimi" data-en="Name">Nimi</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="email" class="email-label block text-sm font-medium text-gray-700 mb-2" data-fi="Sähköposti" data-en="Email">Sähköposti</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="subject" class="subject-label block text-sm font-medium text-gray-700 mb-2" data-fi="Aihe" data-en="Subject">Aihe</label>
+                                <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="message" class="message-label block text-sm font-medium text-gray-700 mb-2" data-fi="Viesti" data-en="Message">Viesti</label>
+                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold w-full send-btn" data-fi="Lähetä Viesti" data-en="Send Message">Lähetä Viesti</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Kenya Kids Ry</h3>
+                    <p class="footer-desc text-gray-300 mb-4" data-fi="Muuttamassa elämää Keniassa vuodesta 2012 lähtien." data-en="Transforming lives in Kenya since 2012.">Muuttamassa elämää Keniassa vuodesta 2012 lähtien.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-programs-title text-lg font-semibold mb-4" data-fi="Ohjelmat" data-en="Programs">Ohjelmat</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors footer-academic" data-fi="Koulutustuki" data-en="Academic Sponsorship">Koulutustuki</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors footer-welfare" data-fi="Perheiden Hyvinvointi" data-en="Family Welfare">Perheiden Hyvinvointi</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors footer-community" data-fi="Yhteisöhankkeet" data-en="Community Projects">Yhteisöhankkeet</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors footer-empowerment" data-fi="Voimaannuttaminen" data-en="Empowerment">Voimaannuttaminen</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-involved-title text-lg font-semibold mb-4" data-fi="Osallistu" data-en="Get Involved">Osallistu</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors footer-donate" data-fi="Lahjoita" data-en="Donate">Lahjoita</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors footer-volunteer" data-fi="Vapaaehtoistyö" data-en="Volunteer">Vapaaehtoistyö</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors footer-newsletter" data-fi="Uutiskirje" data-en="Newsletter">Uutiskirje</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors footer-partner" data-fi="Kumppanuus" data-en="Partnership">Kumppanuus</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-about-title text-lg font-semibold mb-4" data-fi="Tietoa" data-en="About">Tietoa</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors footer-story" data-fi="Tarinaamme" data-en="Our Story">Tarinaamme</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors footer-team" data-fi="Tiimimme" data-en="Our Team">Tiimimme</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors footer-reports" data-fi="Raportit" data-en="Reports">Raportit</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors footer-contact" data-fi="Yhteystiedot" data-en="Contact">Yhteystiedot</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300">
+                <p class="footer-copyright" data-fi="© 2024 Kenya Kids Ry. Kaikki oikeudet pidätetään." data-en="© 2024 Kenya Kids Ry. All rights reserved.">© 2024 Kenya Kids Ry. Kaikki oikeudet pidätetään.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Language switcher functionality
+        const languageBtn = document.getElementById('languageBtn');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const currentLang = document.getElementById('currentLang');
+        let currentLanguage = 'fi';
+
+        languageBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            languageDropdown.classList.remove('active');
+        });
+
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            currentLang.textContent = lang.toUpperCase();
+            languageDropdown.classList.remove('active');
+            
+            // Update all text elements
+            document.querySelectorAll('[data-fi][data-en]').forEach(element => {
+                if (element.tagName === 'INPUT' && element.hasAttribute('data-fi-placeholder')) {
+                    element.placeholder = element.getAttribute(`data-${lang}-placeholder`);
+                } else {
+                    element.textContent = element.getAttribute(`data-${lang}`);
+                }
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            updateCounter();
+        }
+
+        // Trigger counters when impact section is visible
+        const impactSection = document.getElementById('impact');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(document.getElementById('studentsCounter'), 1250);
+                    animateCounter(document.getElementById('familiesCounter'), 850);
+                    animateCounter(document.getElementById('projectsCounter'), 45);
+                    animateCounter(document.getElementById('yearsCounter'), 12);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        observer.observe(impactSection);
+
+        // Newsletter subscription
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            
+            // Create success message
+            const form = event.target;
+            const successMessage = document.createElement('div');
+            successMessage.className = 'bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mt-4';
+            successMessage.innerHTML = currentLanguage === 'fi' 
+                ? `<strong>Kiitos!</strong> Olet nyt tilannut uutiskirjeemme.`
+                : `<strong>Thank you!</strong> You have successfully subscribed to our newsletter.`;
+            
+            form.appendChild(successMessage);
+            form.reset();
+            
+            setTimeout(() => {
+                successMessage.remove();
+            }, 5000);
+        }
+
+        // Contact form submission
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            // Create success message
+            const form = event.target;
+            const successMessage = document.createElement('div');
+            successMessage.className = 'bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mt-4';
+            successMessage.innerHTML = currentLanguage === 'fi' 
+                ? `<strong>Kiitos viestistäsi!</strong> Otamme sinuun yhteyttä pian.`
+                : `<strong>Thank you for your message!</strong> We will get back to you soon.`;
+            
+            form.appendChild(successMessage);
+            form.reset();
+            
+            setTimeout(() => {
+                successMessage.remove();
+            }, 5000);
+        }
+
+        // Add click handlers for all buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Donation buttons
+            document.querySelectorAll('[data-fi="Lahjoita Nyt"], [data-en="Donate Now"]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const message = currentLanguage === 'fi' 
+                        ? 'Kiitos kiinnostuksestasi! Lahjoitussivu avataan pian.'
+                        : 'Thank you for your interest! Donation page will be available soon.';
+                    
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-20 right-4 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+                    notification.textContent = message;
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => notification.remove(), 3000);
+                });
+            });
+
+            // Volunteer buttons
+            document.querySelectorAll('[data-fi="Liity Mukaan"], [data-en="Join Us"]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const message = currentLanguage === 'fi' 
+                        ? 'Kiitos kiinnostuksestasi vapaaehtoistyöhön! Otamme yhteyttä pian.'
+                        : 'Thank you for your interest in volunteering! We will contact you soon.';
+                    
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-20 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+                    notification.textContent = message;
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => notification.remove(), 3000);
+                });
+            });
+
+            // Share buttons
+            document.querySelectorAll('[data-fi="Jaa Nyt"], [data-en="Share Now"]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'Kenya Kids Ry',
+                            text: currentLanguage === 'fi' 
+                                ? 'Tutustu Kenya Kids Ry:n työhön Keniassa!'
+                                : 'Learn about Kenya Kids Ry\'s work in Kenya!',
+                            url: window.location.href
+                        });
+                    } else {
+                        const message = currentLanguage === 'fi' 
+                            ? 'Kopioi tämä linkki jakaaksesi: ' + window.location.href
+                            : 'Copy this link to share: ' + window.location.href;
+                        
+                        const notification = document.createElement('div');
+                        notification.className = 'fixed top-20 right-4 bg-purple-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 max-w-sm';
+                        notification.textContent = message;
+                        document.body.appendChild(notification);
+                        
+                        setTimeout(() => notification.remove(), 5000);
+                    }
+                });
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9910eb9c82cb8a67',t:'MTc2MDg4MzY3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
