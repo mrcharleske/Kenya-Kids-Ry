@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ohjelmat - Kenya Kids Ry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .language-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .language-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .program-tab {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .program-tab.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .program-content {
+            display: none;
+        }
+        
+        .program-content.active {
+            display: block;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- REPLACE: Logo image 150x50px -->
+                    <img src="/images/logo.png" alt="Kenya Kids Ry Logo" class="h-12 w-auto mr-3" onerror="this.src=''; this.alt='Kenya Kids Ry'; this.style.display='none';">
+                    <span class="text-xl font-bold text-gray-800">Kenya Kids Ry</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <span class="nav-text" data-fi="Etusivu" data-en="Home" data-sv="Hem">Etusivu</span>
+                    </a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <span class="nav-text" data-fi="Meistä" data-en="About" data-sv="Om oss">Meistä</span>
+                    </a>
+                    <a href="programs.html" class="text-blue-600 font-semibold">
+                        <span class="nav-text" data-fi="Ohjelmat" data-en="Programs" data-sv="Program">Ohjelmat</span>
+                    </a>
+                    <a href="success-stories.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <span class="nav-text" data-fi="Menestystarinat" data-en="Success Stories" data-sv="Framgångssagor">Menestystarinat</span>
+                    </a>
+                    <a href="get-involved.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <span class="nav-text" data-fi="Osallistu" data-en="Get Involved" data-sv="Engagera dig">Osallistu</span>
+                    </a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <span class="nav-text" data-fi="Yhteystiedot" data-en="Contact" data-sv="Kontakt">Yhteystiedot</span>
+                    </a>
+                </div>
+                
+                <!-- Language Switcher -->
+                <div class="flex items-center space-x-2">
+                    <button onclick="switchLanguage('fi')" class="language-btn active px-3 py-1 rounded text-sm font-medium">FI</button>
+                    <button onclick="switchLanguage('en')" class="language-btn px-3 py-1 rounded text-sm font-medium">EN</button>
+                    <button onclick="switchLanguage('sv')" class="language-btn px-3 py-1 rounded text-sm font-medium">SV</button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-blue-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                    <span class="nav-text" data-fi="Etusivu" data-en="Home" data-sv="Hem">Etusivu</span>
+                </a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                    <span class="nav-text" data-fi="Meistä" data-en="About" data-sv="Om oss">Meistä</span>
+                </a>
+                <a href="programs.html" class="block px-3 py-2 text-blue-600 font-semibold">
+                    <span class="nav-text" data-fi="Ohjelmat" data-en="Programs" data-sv="Program">Ohjelmat</span>
+                </a>
+                <a href="success-stories.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                    <span class="nav-text" data-fi="Menestystarinat" data-en="Success Stories" data-sv="Framgångssagor">Menestystarinat</span>
+                </a>
+                <a href="get-involved.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                    <span class="nav-text" data-fi="Osallistu" data-en="Get Involved" data-sv="Engagera dig">Osallistu</span>
+                </a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                    <span class="nav-text" data-fi="Yhteystiedot" data-en="Contact" data-sv="Kontakt">Yhteystiedot</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 flex items-center justify-center mt-16">
+        <!-- REPLACE: Programs hero background image 1920x600px -->
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hero-programs.jpg');">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        
+        <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto" data-aos="fade-up">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">
+                <span class="hero-title" data-fi="Ohjelmamme" data-en="Our Programs" data-sv="Våra Program">Ohjelmamme</span>
+            </h1>
+            <p class="text-xl md:text-2xl opacity-90">
+                <span class="hero-subtitle" data-fi="Neljä pääaluetta, joiden kautta luomme kestävää muutosta Keniassa" data-en="Four main areas through which we create sustainable change in Kenya" data-sv="Fyra huvudområden genom vilka vi skapar hållbar förändring i Kenya">Neljä pääaluetta, joiden kautta luomme kestävää muutosta Keniassa</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Program Overview Stats -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="stat-card rounded-lg p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="impact-number">247+</div>
+                    <p class="text-gray-600 font-medium">
+                        <span class="stat-text" data-fi="Sponsoroitua Oppilasta" data-en="Students Sponsored" data-sv="Sponsrade Elever">Sponsoroitua Oppilasta</span>
+                    </p>
+                </div>
+                <div class="stat-card rounded-lg p-6 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="impact-number">89</div>
+                    <p class="text-gray-600 font-medium">
+                        <span class="stat-text" data-fi="Autettua Perhettä" data-en="Families Helped" data-sv="Hjälpta Familjer">Autettua Perhettä</span>
+                    </p>
+                </div>
+                <div class="stat-card rounded-lg p-6 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="impact-number">15</div>
+                    <p class="text-gray-600 font-medium">
+                        <span class="stat-text" data-fi="Yhteisöhanketta" data-en="Community Projects" data-sv="Samhällsprojekt">Yhteisöhanketta</span>
+                    </p>
+                </div>
+                <div class="stat-card rounded-lg p-6 text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="impact-number">150+</div>
+                    <p class="text-gray-600 font-medium">
+                        <span class="stat-text" data-fi="Voimaannutettua Henkilöä" data-en="People Empowered" data-sv="Empowered Personer">Voimaannutettua Henkilöä</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Tabs -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    <span class="section-title" data-fi="Tutustu Ohjelmiimme" data-en="Explore Our Programs" data-sv="Utforska Våra Program">Tutustu Ohjelmiimme</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="section-text" data-fi="Klikkaa alla olevia välilehtiä saadaksesi yksityiskohtaista tietoa kustakin ohjelmasta" data-en="Click the tabs below to get detailed information about each program" data-sv="Klicka på flikarna nedan för att få detaljerad information om varje program">Klikkaa alla olevia välilehtiä saadaksesi yksityiskohtaista tietoa kustakin ohjelmasta</span>
+                </p>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="flex flex-wrap justify-center mb-12" data-aos="fade-up" data-aos-delay="200">
+                <button onclick="showProgram('academic')" class="program-tab active px-6 py-3 m-2 rounded-lg font-semibold transition duration-300">
+                    <span class="tab-text" data-fi="Koulutussponsorointi" data-en="Academic Sponsorship" data-sv="Utbildningssponsring">Koulutussponsorointi</span>
+                </button>
+                <button onclick="showProgram('welfare')" class="program-tab px-6 py-3 m-2 rounded-lg font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition duration-300">
+                    <span class="tab-text" data-fi="Perheiden Hyvinvointi" data-en="Family Welfare" data-sv="Familjers Välfärd">Perheiden Hyvinvointi</span>
+                </button>
+                <button onclick="showProgram('community')" class="program-tab px-6 py-3 m-2 rounded-lg font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition duration-300">
+                    <span class="tab-text" data-fi="Yhteisöhankkeet" data-en="Community Projects" data-sv="Samhällsprojekt">Yhteisöhankkeet</span>
+                </button>
+                <button onclick="showProgram('empowerment')" class="program-tab px-6 py-3 m-2 rounded-lg font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition duration-300">
+                    <span class="tab-text" data-fi="Voimaannuttaminen" data-en="Empowerment" data-sv="Empowerment">Voimaannuttaminen</span>
+                </button>
+            </div>
+            
+            <!-- Academic Sponsorship Content -->
+            <div id="academic" class="program-content active">
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <div data-aos="fade-right">
+                        <!-- REPLACE: Academic program detailed image 600x400px -->
+                        <img src="/images/program-academic-detail.jpg" alt="Academic Sponsorship Program" class="rounded-lg shadow-lg w-full" onerror="this.src=''; this.alt='Koulutussponsorointi ohjelma'; this.style.display='none';">
+                    </div>
+                    <div data-aos="fade-left">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6">
+                            <span class="program-title" data-fi="Koulutussponsorointi" data-en="Academic Sponsorship" data-sv="Utbildningssponsring">Koulutussponsorointi</span>
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            <span class="program-description" data-fi="Koulutussponsorointiohjelmamme on sydämessä kaikessa työssämme. Uskomme, että koulutus on tehokkain tapa katkaista köyhyyden kierre ja luoda kestävää muutosta." data-en="Our educational sponsorship program is at the heart of all our work. We believe education is the most effective way to break the cycle of poverty and create sustainable change." data-sv="Vårt utbildningssponsorprogram är kärnan i allt vårt arbete. Vi tror att utbildning är det mest effektiva sättet att bryta fattigdomscykeln och skapa hållbar förändring.">Koulutussponsorointiohjelmamme on sydämessä kaikessa työssämme. Uskomme, että koulutus on tehokkain tapa katkaista köyhyyden kierre ja luoda kestävää muutosta.</span>
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Koulumaksujen Sponsorointi" data-en="School Fee Sponsorship" data-sv="Sponsring av Skolavgifter">Koulumaksujen Sponsorointi</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Maksamme lasten koulumaksut ala-asteesta korkeakouluun asti." data-en="We pay children's school fees from primary school through university." data-sv="Vi betalar barns skolavgifter från grundskola till universitet.">Maksamme lasten koulumaksut ala-asteesta korkeakouluun asti.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Koulutarvikkeet" data-en="School Supplies" data-sv="Skolmaterial">Koulutarvikkeet</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Tarjoamme kirjat, kynät, univormut ja muut tarvittavat koulutarvikkeet." data-en="We provide books, pens, uniforms, and other necessary school supplies." data-sv="Vi tillhandahåller böcker, pennor, uniformer och andra nödvändiga skolmaterial.">Tarjoamme kirjat, kynät, univormut ja muut tarvittavat koulutarvikkeet.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Mentorointituki" data-en="Mentoring Support" data-sv="Mentorstöd">Mentorointituki</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Tarjoamme henkilökohtaista tukea ja ohjausta opiskelijoille heidän koulutuspolullaan." data-en="We provide personal support and guidance to students on their educational journey." data-sv="Vi ger personligt stöd och vägledning till studenter på deras utbildningsresa.">Tarjoamme henkilökohtaista tukea ja ohjausta opiskelijoille heidän koulutuspolullaan.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Family Welfare Content -->
+            <div id="welfare" class="program-content">
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <div data-aos="fade-right">
+                        <!-- REPLACE: Welfare program detailed image 600x400px -->
+                        <img src="/images/program-welfare-detail.jpg" alt="Family Welfare Program" class="rounded-lg shadow-lg w-full" onerror="this.src=''; this.alt='Perheiden hyvinvointi ohjelma'; this.style.display='none';">
+                    </div>
+                    <div data-aos="fade-left">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6">
+                            <span class="program-title" data-fi="Perheiden Hyvinvointi" data-en="Family Welfare" data-sv="Familjers Välfärd">Perheiden Hyvinvointi</span>
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            <span class="program-description" data-fi="Perheiden hyvinvointiohjelma keskittyy perustarpeisiin ja hätätilanteisiin. Ymmärrämme, että lapset voivat keskittyä koulutukseen vain, kun heidän perheensä perustarpeet on turvattu." data-en="Our family welfare program focuses on basic needs and emergency situations. We understand that children can focus on education only when their family's basic needs are secured." data-sv="Vårt familjvälfärdsprogram fokuserar på grundläggande behov och nödsituationer. Vi förstår att barn kan fokusera på utbildning endast när deras familjs grundläggande behov är säkrade.">Perheiden hyvinvointiohjelma keskittyy perustarpeisiin ja hätätilanteisiin. Ymmärrämme, että lapset voivat keskittyä koulutukseen vain, kun heidän perheensä perustarpeet on turvattu.</span>
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Ruoka-apu" data-en="Food Aid" data-sv="Mathjälp">Ruoka-apu</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Tarjoamme säännöllistä ruoka-apua perheille, jotka kamppailevat ravinnon saannin kanssa." data-en="We provide regular food aid to families struggling with nutrition access." data-sv="Vi ger regelbunden mathjälp till familjer som kämpar med näringstillgång.">Tarjoamme säännöllistä ruoka-apua perheille, jotka kamppailevat ravinnon saannin kanssa.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Terveydenhuoltotuki" data-en="Healthcare Support" data-sv="Hälsovårdsstöd">Terveydenhuoltotuki</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Autamme lääkärikustannuksissa ja tarjoamme pääsyn perusterveydenhuoltoon." data-en="We help with medical costs and provide access to basic healthcare." data-sv="Vi hjälper med medicinska kostnader och ger tillgång till grundläggande hälsovård.">Autamme lääkärikustannuksissa ja tarjoamme pääsyn perusterveydenhuoltoon.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Hätäapu" data-en="Emergency Aid" data-sv="Nödhjälp">Hätäapu</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Reagoimme nopeasti hätätilanteisiin, kuten luonnonkatastrofeihin tai äkillisiin kriiseihin." data-en="We respond quickly to emergencies such as natural disasters or sudden crises." data-sv="Vi reagerar snabbt på nödsituationer som naturkatastrofer eller plötsliga kriser.">Reagoimme nopeasti hätätilanteisiin, kuten luonnonkatastrofeihin tai äkillisiin kriiseihin.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Community Projects Content -->
+            <div id="community" class="program-content">
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <div data-aos="fade-right">
+                        <!-- REPLACE: Community program detailed image 600x400px -->
+                        <img src="/images/program-community-detail.jpg" alt="Community Projects Program" class="rounded-lg shadow-lg w-full" onerror="this.src=''; this.alt='Yhteisöhankkeet ohjelma'; this.style.display='none';">
+                    </div>
+                    <div data-aos="fade-left">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6">
+                            <span class="program-title" data-fi="Yhteisöhankkeet" data-en="Community Projects" data-sv="Samhällsprojekt">Yhteisöhankkeet</span>
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            <span class="program-description" data-fi="Yhteisöhankkeemme keskittyvät infrastruktuurin parantamiseen ja koko yhteisön hyödyttäviin projekteihin. Näiden hankkeiden kautta luomme kestävää muutosta, joka hyödyttää sukupolvia." data-en="Our community projects focus on improving infrastructure and projects that benefit entire communities. Through these projects, we create sustainable change that benefits generations." data-sv="Våra samhällsprojekt fokuserar på att förbättra infrastrukturen och projekt som gynnar hela samhällen. Genom dessa projekt skapar vi hållbar förändring som gynnar generationer.">Yhteisöhankkeemme keskittyvät infrastruktuurin parantamiseen ja koko yhteisön hyödyttäviin projekteihin. Näiden hankkeiden kautta luomme kestävää muutosta, joka hyödyttää sukupolvia.</span>
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Vesipumput ja Kaivot" data-en="Water Pumps and Wells" data-sv="Vattenpumpar och Brunnar">Vesipumput ja Kaivot</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Rakennamme vesipumppuja ja kaivoja tarjotaksemme puhdasta vettä koko yhteisölle." data-en="We build water pumps and wells to provide clean water for entire communities." data-sv="Vi bygger vattenpumpar och brunnar för att ge rent vatten till hela samhällen.">Rakennamme vesipumppuja ja kaivoja tarjotaksemme puhdasta vettä koko yhteisölle.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Koulurakennukset" data-en="School Buildings" data-sv="Skolbyggnader">Koulurakennukset</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Rakennamme ja kunnostamme kouluja parantaaksemme oppimisympäristöjä." data-en="We build and renovate schools to improve learning environments." data-sv="Vi bygger och renoverar skolor för att förbättra lärmiljöer.">Rakennamme ja kunnostamme kouluja parantaaksemme oppimisympäristöjä.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Sanitaatiotilat" data-en="Sanitation Facilities" data-sv="Sanitetsanläggningar">Sanitaatiotilat</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Rakennamme käymälöitä ja peseytymistiloja parantaaksemme hygieniaoloja." data-en="We build toilets and washing facilities to improve hygiene conditions." data-sv="Vi bygger toaletter och tvättanläggningar för att förbättra hygienförhållandena.">Rakennamme käymälöitä ja peseytymistiloja parantaaksemme hygieniaoloja.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Empowerment Content -->
+            <div id="empowerment" class="program-content">
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <div data-aos="fade-right">
+                        <!-- REPLACE: Empowerment program detailed image 600x400px -->
+                        <img src="/images/program-empowerment-detail.jpg" alt="Empowerment Program" class="rounded-lg shadow-lg w-full" onerror="this.src=''; this.alt='Voimaannuttaminen ohjelma'; this.style.display='none';">
+                    </div>
+                    <div data-aos="fade-left">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6">
+                            <span class="program-title" data-fi="Voimaannuttaminen" data-en="Empowerment" data-sv="Empowerment">Voimaannuttaminen</span>
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            <span class="program-description" data-fi="Voimaannuttamisohjelma keskittyy taitojen kehittämiseen ja itsenäisyyden lisäämiseen. Tavoitteemme on antaa ihmisille työkalut, joilla he voivat parantaa omaa ja perheidensä elämää pitkällä aikavälillä." data-en="Our empowerment program focuses on skill development and increasing independence. Our goal is to give people the tools to improve their own and their families' lives in the long term." data-sv="Vårt empowerment-program fokuserar på färdighetsutveckling och ökad självständighet. Vårt mål är att ge människor verktygen för att förbättra sitt eget och sina familjers liv på lång sikt.">Voimaannuttamisohjelma keskittyy taitojen kehittämiseen ja itsenäisyyden lisäämiseen. Tavoitteemme on antaa ihmisille työkalut, joilla he voivat parantaa omaa ja perheidensä elämää pitkällä aikavälillä.</span>
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Ammattikoulutus" data-en="Vocational Training" data-sv="Yrkesutbildning">Ammattikoulutus</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Tarjoamme käytännön ammattikoulutusta ompelusta, puusepäntyöstä ja maanviljelystä." data-en="We provide practical vocational training in sewing, carpentry, and agriculture." data-sv="Vi ger praktisk yrkesutbildning inom sömnad, snickeri och jordbruk.">Tarjoamme käytännön ammattikoulutusta ompelusta, puusepäntyöstä ja maanviljelystä.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Mikroyrittäjyystuki" data-en="Microenterprise Support" data-sv="Mikroföretagsstöd">Mikroyrittäjyystuki</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Autamme pienten yritysten perustamisessa ja tarjoamme alkupääomaa." data-en="We help establish small businesses and provide startup capital." data-sv="Vi hjälper till att etablera småföretag och tillhandahåller startkapital.">Autamme pienten yritysten perustamisessa ja tarjoamme alkupääomaa.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="feature-icon w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                        <span class="feature-title" data-fi="Naisten Voimaannuttaminen" data-en="Women's Empowerment" data-sv="Kvinnors Empowerment">Naisten Voimaannuttaminen</span>
+                                    </h4>
+                                    <p class="text-gray-600">
+                                        <span class="feature-text" data-fi="Keskitymme erityisesti naisten taitojen kehittämiseen ja taloudelliseen itsenäisyyteen." data-en="We focus especially on developing women's skills and economic independence." data-sv="Vi fokuserar särskilt på att utveckla kvinnors färdigheter och ekonomiska självständighet.">Keskitymme erityisesti naisten taitojen kehittämiseen ja taloudelliseen itsenäisyyteen.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    <span class="section-title" data-fi="Miten Toimimme" data-en="How We Work" data-sv="Hur Vi Arbetar">Miten Toimimme</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="section-text" data-fi="Työskentelymme perustuu läheiseen yhteistyöhön paikallisten kumppaneiden kanssa" data-en="Our work is based on close collaboration with local partners" data-sv="Vårt arbete bygger på nära samarbete med lokala partners">Työskentelymme perustuu läheiseen yhteistyöhön paikallisten kumppaneiden kanssa</span>
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <span class="step-title" data-fi="1. Tarpeiden Kartoitus" data-en="1. Needs Assessment" data-sv="1. Behovsanalys">1. Tarpeiden Kartoitus</span>
+                    </h3>
+                    <p class="text-gray-600">
+                        <span class="step-text" data-fi="Kartoitamme yhteisöjen tarpeet yhdessä paikallisten kumppaneiden kanssa varmistaaksemme, että apumme menee sinne missä sitä eniten tarvitaan." data-en="We assess community needs together with local partners to ensure our help goes where it's needed most." data-sv="Vi bedömer samhällens behov tillsammans med lokala partners för att säkerställa att vår hjälp går dit den behövs mest.">Kartoitamme yhteisöjen tarpeet yhdessä paikallisten kumppaneiden kanssa varmistaaksemme, että apumme menee sinne missä sitä eniten tarvitaan.</span>
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <span class="step-title" data-fi="2. Yhteisöllinen Suunnittelu" data-en="2. Community Planning" data-sv="2. Gemenskapsplanering">2. Yhteisöllinen Suunnittelu</span>
+                    </h3>
+                    <p class="text-gray-600">
+                        <span class="step-text" data-fi="Suunnittelemme hankkeet yhdessä yhteisön kanssa, jotta ne vastaavat todellisiin tarpeisiin ja ovat kestäviä pitkällä aikavälillä." data-en="We plan projects together with the community so they meet real needs and are sustainable in the long term." data-sv="Vi planerar projekt tillsammans med samhället så att de möter verkliga behov och är hållbara på lång sikt.">Suunnittelemme hankkeet yhdessä yhteisön kanssa, jotta ne vastaavat todellisiin tarpeisiin ja ovat kestäviä pitkällä aikavälillä.</span>
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <span class="step-title" data-fi="3. Seuranta ja Arviointi" data-en="3. Monitoring and Evaluation" data-sv="3. Uppföljning och Utvärdering">3. Seuranta ja Arviointi</span>
+                    </h3>
+                    <p class="text-gray-600">
+                        <span class="step-text" data-fi="Seuraamme hankkeiden edistymistä säännöllisesti ja arvioimme niiden vaikutusta varmistaaksemme tehokkuuden ja läpinäkyvyyden." data-en="We regularly monitor project progress and evaluate their impact to ensure efficiency and transparency." data-sv="Vi övervakar regelbundet projektframsteg och utvärderar deras påverkan för att säkerställa effektivitet och transparens.">Seuraamme hankkeiden edistymistä säännöllisesti ja arvioimme niiden vaikutusta varmistaaksemme tehokkuuden ja läpinäkyvyyden.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-white mb-6">
+                    <span class="section-title" data-fi="Tule Mukaan Tekemään Muutosta" data-en="Join Us in Making Change" data-sv="Gå Med Oss i Att Göra Förändring">Tule Mukaan Tekemään Muutosta</span>
+                </h2>
+                <p class="text-xl text-white mb-8 opacity-90">
+                    <span class="section-text" data-fi="Valitse ohjelma, joka puhuttelee sinua eniten ja ala tukemaan kenialaisia lapsia ja perheitä" data-en="Choose the program that speaks to you most and start supporting Kenyan children and families" data-sv="Välj det program som talar till dig mest och börja stödja kenyanska barn och familjer">Valitse ohjelma, joka puhuttelee sinua eniten ja ala tukemaan kenialaisia lapsia ja perheitä</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="get-involved.html" class="bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300">
+                        <span class="cta-text" data-fi="Aloita Sponsorointi" data-en="Start Sponsoring" data-sv="Börja Sponsra">Aloita Sponsorointi</span>
+                    </a>
+                    <a href="success-stories.html" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
+                        <span class="cta-text" data-fi="Katso Vaikutuksia" data-en="See Impact" data-sv="Se Påverkan">Katso Vaikutuksia</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <!-- REPLACE: Footer logo 120x40px -->
+                        <img src="/images/logo-white.png" alt="Kenya Kids Ry Logo" class="h-10 w-auto mr-3" onerror="this.src=''; this.alt='Kenya Kids Ry'; this.style.display='none';">
+                        <span class="text-xl font-bold">Kenya Kids Ry</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        <span class="footer-text" data-fi="Auttamassa kenialaisia lapsia ja perheitä vuodesta 2012." data-en="Helping Kenyan children and families since 2012." data-sv="Hjälper kenyanska barn och familjer sedan 2012.">Auttamassa kenialaisia lapsia ja perheitä vuodesta 2012.</span>
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">
+                        <span class="footer-title" data-fi="Pikavalikko" data-en="Quick Links" data-sv="Snabblänkar">Pikavalikko</span>
+                    </h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition duration-300">
+                            <span class="nav-text" data-fi="Meistä" data-en="About" data-sv="Om oss">Meistä</span>
+                        </a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-white transition duration-300">
+                            <span class="nav-text" data-fi="Ohjelmat" data-en="Programs" data-sv="Program">Ohjelmat</span>
+                        </a></li>
+                        <li><a href="success-stories.html" class="text-gray-300 hover:text-white transition duration-300">
+                            <span class="nav-text" data-fi="Menestystarinat" data-en="Success Stories" data-sv="Framgångssagor">Menestystarinat</span>
+                        </a></li>
+                        <li><a href="get-involved.html" class="text-gray-300 hover:text-white transition duration-300">
+                            <span class="nav-text" data-fi="Osallistu" data-en="Get Involved" data-sv="Engagera dig">Osallistu</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">
+                        <span class="footer-title" data-fi="Yhteystiedot" data-en="Contact" data-sv="Kontakt">Yhteystiedot</span>
+                    </h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>
+                            <span class="contact-text" data-fi="Sähköposti:" data-en="Email:" data-sv="E-post:">Sähköposti:</span>
+                            <br>info@kenyakids.fi
+                        </li>
+                        <li>
+                            <span class="contact-text" data-fi="Puhelin:" data-en="Phone:" data-sv="Telefon:">Puhelin:</span>
+                            <br>+358 XX XXX XXXX
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">
+                        <span class="footer-title" data-fi="Seuraa Meitä" data-en="Follow Us" data-sv="Följ Oss">Seuraa Meitä</span>
+                    </h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    <span class="copyright-text" data-fi="© 2024 Kenya Kids Ry. Kaikki oikeudet pidätetään." data-en="© 2024 Kenya Kids Ry. All rights reserved." data-sv="© 2024 Kenya Kids Ry. Alla rättigheter förbehållna.">© 2024 Kenya Kids Ry. Kaikki oikeudet pidätetään.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Language switching functionality
+        let currentLanguage = 'fi';
+
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update language buttons
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update all text elements
+            document.querySelectorAll('[data-fi]').forEach(element => {
+                if (element.hasAttribute(`data-${lang}`)) {
+                    element.textContent = element.getAttribute(`data-${lang}`);
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Program tab functionality
+        function showProgram(programId) {
+            // Hide all program contents
+            document.querySelectorAll('.program-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.program-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+                tab.classList.remove('text-white');
+            });
+            
+            // Show selected program content
+            document.getElementById(programId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            event.target.classList.remove('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+            event.target.classList.add('text-white');
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial language
+            switchLanguage('fi');
+            
+            // Add loading animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease-in-out';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9918efeaf3824ed4',t:'MTc2MDk2NzczMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
