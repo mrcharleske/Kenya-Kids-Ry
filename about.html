@@ -1,196 +1,668 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn about Kenya Kids Ry, founded by Katja Maria, and our mission to provide education and care to children in Kenya.">
-  <meta name="keywords" content="Kenya Kids Ry, about us, Katja Maria, child education Kenya">
-  <meta property="og:title" content="About - Kenya Kids Ry">
-  <meta property="og:description" content="Discover the story of Kenya Kids Ry and our founder, Katja Maria.">
-  <meta property="og:image" content="images/FB_IMG_1757424566661.jpg">
-  <meta property="og:url" content="https://yourwebsite.com/about.html">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Kenya Kids Ry",
-    "url": "https://yourwebsite.com/",
-    "founder": "Katja Maria",
-    "description": "Non-profit providing care and education to children in Kenya."
-  }
-  </script>
-  <title>About - Kenya Kids Ry</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Hero */
-    .hero {
-      height: 25vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: linear-gradient(135deg, #007b5e, #6a11cb);
-    }
-    .hero-box {
-      background: white;
-      padding: 1rem 2rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      animation: pulse 2s infinite ease-in-out;
-    }
-    .hero-box h1 {
-      font-size: 2rem;
-      color: #007b5e;
-    }
-
-    /* About Sections */
-    .about-section {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1100px;
-      margin: 3rem auto;
-      gap: 2rem;
-      padding: 0 1rem;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    .about-section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .about-section img {
-      width: 100%;
-      max-width: 450px;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    }
-    .about-text {
-      flex: 1;
-    }
-    .about-text h2 {
-      color: #6a11cb;
-      margin-bottom: 1rem;
-    }
-    .about-text p {
-      margin-bottom: 1rem;
-    }
-
-    /* Alternate layout */
-    .reverse {
-      flex-direction: row-reverse;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .about-section, .reverse {
-        flex-direction: column;
-        text-align: center;
-      }
-      .about-section img {
-        max-width: 90%;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Navbar -->
-  <header>
-    <div class="logo">Kenya Kids Ry</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="success.html">Success Stories</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="hamburger"><div></div><div></div><div></div></div>
-  </header>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="success.html">Success Stories</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-box">
-      <h1>About Us</h1>
-    </div>
-  </section>
-
-  <!-- Katja Section -->
-  <section class="about-section">
-    <img src="images/FB_IMG_1757424566661.jpg" alt="Katja Maria, founder of Kenya Kids Ry">
-    <div class="about-text">
-      <h2>Meet Katja Maria</h2>
-      <p>Katja Maria, a humanitarian with a heart for children, founded Kenya Kids Ry out of a deep passion to transform lives through love, care, and education. Her journey began with a single step of faith, reaching out to children living in hardship and providing them with hope.</p>
-      <p>Through her leadership and dedication, Katja has been instrumental in building bridges of opportunity for children who otherwise would be left behind. She strongly believes that every child deserves the chance to discover their potential and live a life of dignity.</p>
-    </div>
-  </section>
-
-  <!-- Kenya Kids Ry Section -->
-  <section class="about-section reverse">
-    <img src="images/FB_IMG_1757424749416.jpg" alt="Kenya Kids Ry community outreach">
-    <div class="about-text">
-      <h2>About Kenya Kids Ry</h2>
-      <p>Kenya Kids Ry is a child-focused initiative dedicated to providing education, healthcare, and mentorship to vulnerable children across Kenya. Our mission is to break the cycle of poverty by empowering children with tools to succeed.</p>
-      <p>We focus not only on academics, but also on holistic growth — ensuring children receive the love, care, and emotional support they need to thrive. Over the years, Kenya Kids Ry has impacted hundreds of lives, proving that with compassion and community, transformation is possible.</p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    © 2025 Kenya Kids Ry
-  </footer>
-
-  <!-- Script -->
-  <script>
-    // Hamburger menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = mobileMenu.querySelectorAll('a');
-
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('show');
-      hamburger.classList.toggle('active');
-    });
-
-    // Close menu when a link is clicked
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('show');
-        hamburger.classList.remove('active');
-      });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        mobileMenu.classList.remove('show');
-        hamburger.classList.remove('active');
-      }
-    });
-
-    // Fade-in on scroll and page load
-    const sections = document.querySelectorAll('.about-section');
-    function checkVisibility() {
-      sections.forEach(section => {
-        const position = section.getBoundingClientRect().top;
-        if (position < window.innerHeight * 0.8) {
-          section.classList.add('show');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meistä - Kenya Kids Ry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        body {
+            box-sizing: border-box;
         }
-      });
-    }
-    window.addEventListener('scroll', checkVisibility);
-    window.addEventListener('load', checkVisibility);
-  </script>
-</body>
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .language-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .language-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.5rem;
+            width: 2px;
+            height: calc(100% - 1rem);
+            background: #e5e7eb;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .value-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- REPLACE: Logo image 150x50px -->
+                    <img src="/images/logo.png" alt="Kenya Kids Ry Logo" class="h-12 w-auto mr-3" onerror="this.src=''; this.alt='Kenya Kids Ry'; this.style.display='none';">
+                    <span class="text-xl font-bold text-gray-800">Kenya Kids Ry</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <span class="nav-text" data-fi="Etusivu" data-en="Home" data-sv="Hem">Etusivu</span>
+                    </a>
+                    <a href="about.html" class="text-blue-600 font-semibold">
+                        <span class="nav-text" data-fi="Meistä" data-en="About" data-sv="Om oss">Meistä</span>
+                    </a>
+                    <a href="programs.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <span class="nav-text" data-fi="Ohjelmat" data-en="Programs" data-sv="Program">Ohjelmat</span>
+                    </a>
+                    <a href="success-stories.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <span class="nav-text" data-fi="Menestystarinat" data-en="Success Stories" data-sv="Framgångssagor">Menestystarinat</span>
+                    </a>
+                    <a href="get-involved.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <span class="nav-text" data-fi="Osallistu" data-en="Get Involved" data-sv="Engagera dig">Osallistu</span>
+                    </a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <span class="nav-text" data-fi="Yhteystiedot" data-en="Contact" data-sv="Kontakt">Yhteystiedot</span>
+                    </a>
+                </div>
+                
+                <!-- Language Switcher -->
+                <div class="flex items-center space-x-2">
+                    <button onclick="switchLanguage('fi')" class="language-btn active px-3 py-1 rounded text-sm font-medium">FI</button>
+                    <button onclick="switchLanguage('en')" class="language-btn px-3 py-1 rounded text-sm font-medium">EN</button>
+                    <button onclick="switchLanguage('sv')" class="language-btn px-3 py-1 rounded text-sm font-medium">SV</button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-blue-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                    <span class="nav-text" data-fi="Etusivu" data-en="Home" data-sv="Hem">Etusivu</span>
+                </a>
+                <a href="about.html" class="block px-3 py-2 text-blue-600 font-semibold">
+                    <span class="nav-text" data-fi="Meistä" data-en="About" data-sv="Om oss">Meistä</span>
+                </a>
+                <a href="programs.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                    <span class="nav-text" data-fi="Ohjelmat" data-en="Programs" data-sv="Program">Ohjelmat</span>
+                </a>
+                <a href="success-stories.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                    <span class="nav-text" data-fi="Menestystarinat" data-en="Success Stories" data-sv="Framgångssagor">Menestystarinat</span>
+                </a>
+                <a href="get-involved.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                    <span class="nav-text" data-fi="Osallistu" data-en="Get Involved" data-sv="Engagera dig">Osallistu</span>
+                </a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600">
+                    <span class="nav-text" data-fi="Yhteystiedot" data-en="Contact" data-sv="Kontakt">Yhteystiedot</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 flex items-center justify-center mt-16">
+        <!-- REPLACE: About hero background image 1920x600px -->
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hero-about.jpg');">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        
+        <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto" data-aos="fade-up">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">
+                <span class="hero-title" data-fi="Tarinaamme" data-en="Our Story" data-sv="Vår Berättelse">Tarinaamme</span>
+            </h1>
+            <p class="text-xl md:text-2xl opacity-90">
+                <span class="hero-subtitle" data-fi="Matka toivon ja muutoksen luomiseen Keniassa" data-en="A journey of creating hope and change in Kenya" data-sv="En resa för att skapa hopp och förändring i Kenya">Matka toivon ja muutoksen luomiseen Keniassa</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Founder Story Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div data-aos="fade-right">
+                    <!-- REPLACE: Katja Maria portrait 600x800px -->
+                    <img src="/images/katja-maria-portrait.jpg" alt="Katja Maria - Founder" class="rounded-lg shadow-lg w-full" onerror="this.src=''; this.alt='Katja Maria - Perustaja'; this.style.display='none';">
+                </div>
+                <div data-aos="fade-left">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">
+                        <span class="section-title" data-fi="Katja Maria - Perustaja" data-en="Katja Maria - Founder" data-sv="Katja Maria - Grundare">Katja Maria - Perustaja</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        <span class="section-text" data-fi="Vuonna 2012 Katja Maria teki päätöksen, joka muuttaisi lukemattomien kenialaisten lasten ja perheiden elämän. Ensimmäisen matkansa jälkeen Keniaan hän näki syvän tarpeen koulutustuelle ja perheiden hyvinvoinnille." data-en="In 2012, Katja Maria made a decision that would change the lives of countless Kenyan children and families. After her first trip to Kenya, she saw the deep need for educational support and family welfare." data-sv="År 2012 fattade Katja Maria ett beslut som skulle förändra livet för otaliga kenyanska barn och familjer. Efter sin första resa till Kenya såg hon det djupa behovet av utbildningsstöd och familjers välfärd.">Vuonna 2012 Katja Maria teki päätöksen, joka muuttaisi lukemattomien kenialaisten lasten ja perheiden elämän. Ensimmäisen matkansa jälkeen Keniaan hän näki syvän tarpeen koulutustuelle ja perheiden hyvinvoinnille.</span>
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        <span class="section-text" data-fi="Katjan visio oli yksinkertainen mutta voimakas: jokainen lapsi ansaitsee mahdollisuuden koulutukseen ja jokaisella perheellä tulisi olla pääsy perustarpeisiin. Tämä visio johti Kenya Kids Ry:n perustamiseen." data-en="Katja's vision was simple but powerful: every child deserves the opportunity for education and every family should have access to basic needs. This vision led to the founding of Kenya Kids Ry." data-sv="Katjas vision var enkel men kraftfull: varje barn förtjänar möjligheten till utbildning och varje familj bör ha tillgång till grundläggande behov. Denna vision ledde till grundandet av Kenya Kids Ry.">Katjan visio oli yksinkertainen mutta voimakas: jokainen lapsi ansaitsee mahdollisuuden koulutukseen ja jokaisella perheellä tulisi olla pääsy perustarpeisiin. Tämä visio johti Kenya Kids Ry:n perustamiseen.</span>
+                    </p>
+                    <blockquote class="border-l-4 border-blue-500 pl-6 italic text-gray-700 text-xl mb-6">
+                        <span class="quote-text" data-fi="'Kun näin ensimmäisen kerran lasten silmissä toivon, kun he saivat mahdollisuuden koulutukseen, tiesin että tämä oli minun kutsumukseni.'" data-en="'When I first saw hope in children's eyes as they got the opportunity for education, I knew this was my calling.'" data-sv="'När jag först såg hopp i barnens ögon när de fick möjligheten till utbildning, visste jag att detta var min kallelse.'">Kun näin ensimmäisen kerran lasten silmissä toivon, kun he saivat mahdollisuuden koulutukseen, tiesin että tämä oli minun kutsumukseni.</span>
+                        <footer class="mt-2 text-gray-500">- Katja Maria</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    <span class="section-title" data-fi="Missiomme & Visiomme" data-en="Our Mission & Vision" data-sv="Vår Mission & Vision">Missiomme & Visiomme</span>
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-white rounded-lg shadow-lg p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                            <span class="mission-title" data-fi="Missiomme" data-en="Our Mission" data-sv="Vår Mission">Missiomme</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 text-center leading-relaxed">
+                        <span class="mission-text" data-fi="Parantaa kenialaisten lasten ja perheiden elämänlaatua tarjoamalla koulutustukea, hyvinvointipalveluja ja yhteisöhankkeita, jotka luovat kestävää muutosta ja toivoa tulevaisuudelle." data-en="To improve the quality of life for Kenyan children and families by providing educational support, welfare services, and community projects that create sustainable change and hope for the future." data-sv="Att förbättra livskvaliteten för kenyanska barn och familjer genom att tillhandahålla utbildningsstöd, välfärdstjänster och samhällsprojekt som skapar hållbar förändring och hopp för framtiden.">Parantaa kenialaisten lasten ja perheiden elämänlaatua tarjoamalla koulutustukea, hyvinvointipalveluja ja yhteisöhankkeita, jotka luovat kestävää muutosta ja toivoa tulevaisuudelle.</span>
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                            <span class="vision-title" data-fi="Visiomme" data-en="Our Vision" data-sv="Vår Vision">Visiomme</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 text-center leading-relaxed">
+                        <span class="vision-text" data-fi="Maailma, jossa jokaisella kenialaisella lapsella on mahdollisuus saada laadukasta koulutusta ja jokaisella perheellä on pääsy perustarpeisiin, luoden vahvoja ja itsenäisiä yhteisöjä." data-en="A world where every Kenyan child has the opportunity to receive quality education and every family has access to basic needs, creating strong and independent communities." data-sv="En värld där varje kenyanskt barn har möjlighet att få kvalitetsutbildning och varje familj har tillgång till grundläggande behov, vilket skapar starka och oberoende samhällen.">Maailma, jossa jokaisella kenialaisella lapsella on mahdollisuus saada laadukasta koulutusta ja jokaisella perheellä on pääsy perustarpeisiin, luoden vahvoja ja itsenäisiä yhteisöjä.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    <span class="section-title" data-fi="Arvomme" data-en="Our Values" data-sv="Våra Värderingar">Arvomme</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="section-text" data-fi="Nämä arvot ohjaavat kaikkea työtämme ja päätöksentekoamme" data-en="These values guide all our work and decision-making" data-sv="Dessa värderingar vägleder allt vårt arbete och beslutsfattande">Nämä arvot ohjaavat kaikkea työtämme ja päätöksentekoamme</span>
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="value-card rounded-lg p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">
+                        <span class="value-title" data-fi="Myötätunto" data-en="Compassion" data-sv="Medkänsla">Myötätunto</span>
+                    </h3>
+                    <p class="text-gray-600">
+                        <span class="value-text" data-fi="Toimimme sydämellä ja ymmärrämme jokaisen yksilön ainutlaatuiset tarpeet." data-en="We act with heart and understand each individual's unique needs." data-sv="Vi agerar med hjärtat och förstår varje individs unika behov.">Toimimme sydämellä ja ymmärrämme jokaisen yksilön ainutlaatuiset tarpeet.</span>
+                    </p>
+                </div>
+                
+                <div class="value-card rounded-lg p-6 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">
+                        <span class="value-title" data-fi="Läpinäkyvyys" data-en="Transparency" data-sv="Transparens">Läpinäkyvyys</span>
+                    </h3>
+                    <p class="text-gray-600">
+                        <span class="value-text" data-fi="Olemme avoimia toiminnastamme ja varmistamme, että jokainen lahjoitettu euro käytetään tehokkaasti." data-en="We are open about our operations and ensure every donated euro is used effectively." data-sv="Vi är öppna om vår verksamhet och säkerställer att varje donerad euro används effektivt.">Olemme avoimia toiminnastamme ja varmistamme, että jokainen lahjoitettu euro käytetään tehokkaasti.</span>
+                    </p>
+                </div>
+                
+                <div class="value-card rounded-lg p-6 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">
+                        <span class="value-title" data-fi="Yhteisöllisyys" data-en="Community" data-sv="Gemenskap">Yhteisöllisyys</span>
+                    </h3>
+                    <p class="text-gray-600">
+                        <span class="value-text" data-fi="Uskomme yhteistyön voimaan ja rakennamme siltoja kulttuurien välille." data-en="We believe in the power of collaboration and build bridges between cultures." data-sv="Vi tror på samarbetets kraft och bygger broar mellan kulturer.">Uskomme yhteistyön voimaan ja rakennamme siltoja kulttuurien välille.</span>
+                    </p>
+                </div>
+                
+                <div class="value-card rounded-lg p-6 text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">
+                        <span class="value-title" data-fi="Kestävyys" data-en="Sustainability" data-sv="Hållbarhet">Kestävyys</span>
+                    </h3>
+                    <p class="text-gray-600">
+                        <span class="value-text" data-fi="Keskitymme pitkäaikaisiin ratkaisuihin, jotka luovat pysyvää muutosta yhteisöissä." data-en="We focus on long-term solutions that create lasting change in communities." data-sv="Vi fokuserar på långsiktiga lösningar som skapar bestående förändring i samhällen.">Keskitymme pitkäaikaisiin ratkaisuihin, jotka luovat pysyvää muutosta yhteisöissä.</span>
+                    </p>
+                </div>
+                
+                <div class="value-card rounded-lg p-6 text-center" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">
+                        <span class="value-title" data-fi="Toivo" data-en="Hope" data-sv="Hopp">Toivo</span>
+                    </h3>
+                    <p class="text-gray-600">
+                        <span class="value-text" data-fi="Tuomme valoa pimeisiin hetkiin ja uskomme jokaisen ihmisen potentiaaliin." data-en="We bring light to dark moments and believe in every person's potential." data-sv="Vi för ljus till mörka stunder och tror på varje persons potential.">Tuomme valoa pimeisiin hetkiin ja uskomme jokaisen ihmisen potentiaaliin.</span>
+                    </p>
+                </div>
+                
+                <div class="value-card rounded-lg p-6 text-center" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">
+                        <span class="value-title" data-fi="Vastuu" data-en="Responsibility" data-sv="Ansvar">Vastuu</span>
+                    </h3>
+                    <p class="text-gray-600">
+                        <span class="value-text" data-fi="Kannamme vastuun teoistamme ja vaikutuksestamme yhteisöihin." data-en="We take responsibility for our actions and impact on communities." data-sv="Vi tar ansvar för våra handlingar och påverkan på samhällen.">Kannamme vastuun teoistamme ja vaikutuksestamme yhteisöihin.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    <span class="section-title" data-fi="Matkamme" data-en="Our Journey" data-sv="Vår Resa">Matkamme</span>
+                </h2>
+                <p class="text-xl text-gray-600">
+                    <span class="section-text" data-fi="Tärkeimmät virstanpylväät vuodesta 2012 lähtien" data-en="Key milestones since 2012" data-sv="Viktiga milstolpar sedan 2012">Tärkeimmät virstanpylväät vuodesta 2012 lähtien</span>
+                </p>
+            </div>
+            
+            <div class="space-y-8">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl font-bold text-blue-600 mr-4">2012</span>
+                            <h3 class="text-xl font-bold text-gray-800">
+                                <span class="timeline-title" data-fi="Kenya Kids Ry Perustetaan" data-en="Kenya Kids Ry Founded" data-sv="Kenya Kids Ry Grundas">Kenya Kids Ry Perustetaan</span>
+                            </h3>
+                        </div>
+                        <p class="text-gray-600">
+                            <span class="timeline-text" data-fi="Katja Maria perustaa organisaation ensimmäisen Kenya-matkansa innoittamana. Ensimmäiset 5 lasta saa koulutussponsoroinnin." data-en="Katja Maria founds the organization inspired by her first trip to Kenya. First 5 children receive educational sponsorship." data-sv="Katja Maria grundar organisationen inspirerad av sin första resa till Kenya. De första 5 barnen får utbildningssponsring.">Katja Maria perustaa organisaation ensimmäisen Kenya-matkansa innoittamana. Ensimmäiset 5 lasta saa koulutussponsoroinnin.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl font-bold text-blue-600 mr-4">2014</span>
+                            <h3 class="text-xl font-bold text-gray-800">
+                                <span class="timeline-title" data-fi="Ensimmäinen Yhteisöhanke" data-en="First Community Project" data-sv="Första Samhällsprojektet">Ensimmäinen Yhteisöhanke</span>
+                            </h3>
+                        </div>
+                        <p class="text-gray-600">
+                            <span class="timeline-text" data-fi="Rakennamme ensimmäisen vesipumppumme, joka palvelee yli 200 perhettä. Sponsoroitujen lasten määrä kasvaa 25:een." data-en="We build our first water pump serving over 200 families. Number of sponsored children grows to 25." data-sv="Vi bygger vår första vattenpump som betjänar över 200 familjer. Antalet sponsrade barn växer till 25.">Rakennamme ensimmäisen vesipumppumme, joka palvelee yli 200 perhettä. Sponsoroitujen lasten määrä kasvaa 25:een.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl font-bold text-blue-600 mr-4">2017</span>
+                            <h3 class="text-xl font-bold text-gray-800">
+                                <span class="timeline-title" data-fi="Koulutuskeskuksen Avaaminen" data-en="Training Center Opening" data-sv="Öppning av Utbildningscenter">Koulutuskeskuksen Avaaminen</span>
+                            </h3>
+                        </div>
+                        <p class="text-gray-600">
+                            <span class="timeline-text" data-fi="Avaamme ensimmäisen koulutuskeskuksemme, jossa tarjoamme ammattikoulutusta nuorille ja aikuisille. 100 lasta saa nyt koulutustukea." data-en="We open our first training center offering vocational training for youth and adults. 100 children now receive educational support." data-sv="Vi öppnar vårt första utbildningscenter som erbjuder yrkesutbildning för ungdomar och vuxna. 100 barn får nu utbildningsstöd.">Avaamme ensimmäisen koulutuskeskuksemme, jossa tarjoamme ammattikoulutusta nuorille ja aikuisille. 100 lasta saa nyt koulutustukea.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl font-bold text-blue-600 mr-4">2020</span>
+                            <h3 class="text-xl font-bold text-gray-800">
+                                <span class="timeline-title" data-fi="COVID-19 Hätäapu" data-en="COVID-19 Emergency Aid" data-sv="COVID-19 Nödhjälp">COVID-19 Hätäapu</span>
+                            </h3>
+                        </div>
+                        <p class="text-gray-600">
+                            <span class="timeline-text" data-fi="Pandemian aikana tarjoamme hätäapua 150 perheelle ruoan ja hygieniatarvikkeiden muodossa. Jatkamme koulutustukea etäopetuksen kautta." data-en="During the pandemic, we provide emergency aid to 150 families in the form of food and hygiene supplies. We continue educational support through remote learning." data-sv="Under pandemin ger vi nödhjälp till 150 familjer i form av mat och hygienartiklar. Vi fortsätter utbildningsstödet genom distansundervisning.">Pandemian aikana tarjoamme hätäapua 150 perheelle ruoan ja hygieniatarvikkeiden muodossa. Jatkamme koulutustukea etäopetuksen kautta.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl font-bold text-blue-600 mr-4">2024</span>
+                            <h3 class="text-xl font-bold text-gray-800">
+                                <span class="timeline-title" data-fi="Tänään" data-en="Today" data-sv="Idag">Tänään</span>
+                            </h3>
+                        </div>
+                        <p class="text-gray-600">
+                            <span class="timeline-text" data-fi="Tuemme yli 247 lasta koulutuksessa, olemme auttaneet 89 perhettä ja toteuttaneet 15 yhteisöhanketta. Matka jatkuu!" data-en="We support over 247 children in education, have helped 89 families, and completed 15 community projects. The journey continues!" data-sv="Vi stöder över 247 barn i utbildning, har hjälpt 89 familjer och genomfört 15 samhällsprojekt. Resan fortsätter!">Tuemme yli 247 lasta koulutuksessa, olemme auttaneet 89 perhettä ja toteuttaneet 15 yhteisöhanketta. Matka jatkuu!</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    <span class="section-title" data-fi="Tiimimme" data-en="Our Team" data-sv="Vårt Team">Tiimimme</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="section-text" data-fi="Intohimoiset ihmiset, jotka tekevät muutoksen mahdolliseksi" data-en="Passionate people making change possible" data-sv="Passionerade människor som gör förändring möjlig">Intohimoiset ihmiset, jotka tekevät muutoksen mahdolliseksi</span>
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <!-- REPLACE: Team member 1 image 400x400px -->
+                    <img src="/images/team-katja.jpg" alt="Katja Maria" class="w-full h-64 object-cover" onerror="this.src=''; this.alt='Katja Maria'; this.style.display='none';">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Katja Maria</h3>
+                        <p class="text-blue-600 font-semibold mb-3">
+                            <span class="role-text" data-fi="Perustaja & Puheenjohtaja" data-en="Founder & Chairperson" data-sv="Grundare & Ordförande">Perustaja & Puheenjohtaja</span>
+                        </p>
+                        <p class="text-gray-600 text-sm">
+                            <span class="bio-text" data-fi="Katja on organisaation sydän ja sielu, joka johtaa kaikkia hankkeita intohimolla ja omistautumisella." data-en="Katja is the heart and soul of the organization, leading all projects with passion and dedication." data-sv="Katja är organisationens hjärta och själ, som leder alla projekt med passion och hängivenhet.">Katja on organisaation sydän ja sielu, joka johtaa kaikkia hankkeita intohimolla ja omistautumisella.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <!-- REPLACE: Team member 2 image 400x400px -->
+                    <img src="/images/team-coordinator.jpg" alt="Local Coordinator" class="w-full h-64 object-cover" onerror="this.src=''; this.alt='Paikallinen Koordinaattori'; this.style.display='none';">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Samuel Kiprotich</h3>
+                        <p class="text-blue-600 font-semibold mb-3">
+                            <span class="role-text" data-fi="Paikallinen Koordinaattori" data-en="Local Coordinator" data-sv="Lokal Koordinator">Paikallinen Koordinaattori</span>
+                        </p>
+                        <p class="text-gray-600 text-sm">
+                            <span class="bio-text" data-fi="Samuel koordinoi kaikkia hankkeita Keniassa ja varmistaa, että apu menee perille oikeille henkilöille." data-en="Samuel coordinates all projects in Kenya and ensures aid reaches the right people." data-sv="Samuel koordinerar alla projekt i Kenya och säkerställer att hjälpen når rätt personer.">Samuel koordinoi kaikkia hankkeita Keniassa ja varmistaa, että apu menee perille oikeille henkilöille.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <!-- REPLACE: Team member 3 image 400x400px -->
+                    <img src="/images/team-volunteer.jpg" alt="Volunteer Coordinator" class="w-full h-64 object-cover" onerror="this.src=''; this.alt='Vapaaehtoistoiminnan Koordinaattori'; this.style.display='none';">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Anna Virtanen</h3>
+                        <p class="text-blue-600 font-semibold mb-3">
+                            <span class="role-text" data-fi="Vapaaehtoistoiminnan Koordinaattori" data-en="Volunteer Coordinator" data-sv="Volontärkoordinator">Vapaaehtoistoiminnan Koordinaattori</span>
+                        </p>
+                        <p class="text-gray-600 text-sm">
+                            <span class="bio-text" data-fi="Anna koordinoi vapaaehtoistoimintaa Suomessa ja auttaa uusia tukijoita löytämään sopivan tavan osallistua." data-en="Anna coordinates volunteer activities in Finland and helps new supporters find suitable ways to participate." data-sv="Anna koordinerar volontäraktiviteter i Finland och hjälper nya supportrar att hitta lämpliga sätt att delta.">Anna koordinoi vapaaehtoistoimintaa Suomessa ja auttaa uusia tukijoita löytämään sopivan tavan osallistua.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-white mb-6">
+                    <span class="section-title" data-fi="Liity Mukaan Matkaamme" data-en="Join Our Journey" data-sv="Gå Med På Vår Resa">Liity Mukaan Matkaamme</span>
+                </h2>
+                <p class="text-xl text-white mb-8 opacity-90">
+                    <span class="section-text" data-fi="Yhdessä voimme luoda kestävää muutosta ja toivoa Keniaan" data-en="Together we can create sustainable change and hope in Kenya" data-sv="Tillsammans kan vi skapa hållbar förändring och hopp i Kenya">Yhdessä voimme luoda kestävää muutosta ja toivoa Keniaan</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="get-involved.html" class="bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300">
+                        <span class="cta-text" data-fi="Osallistu Nyt" data-en="Get Involved Now" data-sv="Engagera dig nu">Osallistu Nyt</span>
+                    </a>
+                    <a href="programs.html" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
+                        <span class="cta-text" data-fi="Tutustu Ohjelmiimme" data-en="Explore Our Programs" data-sv="Utforska Våra Program">Tutustu Ohjelmiimme</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <!-- REPLACE: Footer logo 120x40px -->
+                        <img src="/images/logo-white.png" alt="Kenya Kids Ry Logo" class="h-10 w-auto mr-3" onerror="this.src=''; this.alt='Kenya Kids Ry'; this.style.display='none';">
+                        <span class="text-xl font-bold">Kenya Kids Ry</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        <span class="footer-text" data-fi="Auttamassa kenialaisia lapsia ja perheitä vuodesta 2012." data-en="Helping Kenyan children and families since 2012." data-sv="Hjälper kenyanska barn och familjer sedan 2012.">Auttamassa kenialaisia lapsia ja perheitä vuodesta 2012.</span>
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">
+                        <span class="footer-title" data-fi="Pikavalikko" data-en="Quick Links" data-sv="Snabblänkar">Pikavalikko</span>
+                    </h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition duration-300">
+                            <span class="nav-text" data-fi="Meistä" data-en="About" data-sv="Om oss">Meistä</span>
+                        </a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-white transition duration-300">
+                            <span class="nav-text" data-fi="Ohjelmat" data-en="Programs" data-sv="Program">Ohjelmat</span>
+                        </a></li>
+                        <li><a href="success-stories.html" class="text-gray-300 hover:text-white transition duration-300">
+                            <span class="nav-text" data-fi="Menestystarinat" data-en="Success Stories" data-sv="Framgångssagor">Menestystarinat</span>
+                        </a></li>
+                        <li><a href="get-involved.html" class="text-gray-300 hover:text-white transition duration-300">
+                            <span class="nav-text" data-fi="Osallistu" data-en="Get Involved" data-sv="Engagera dig">Osallistu</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">
+                        <span class="footer-title" data-fi="Yhteystiedot" data-en="Contact" data-sv="Kontakt">Yhteystiedot</span>
+                    </h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>
+                            <span class="contact-text" data-fi="Sähköposti:" data-en="Email:" data-sv="E-post:">Sähköposti:</span>
+                            <br>info@kenyakids.fi
+                        </li>
+                        <li>
+                            <span class="contact-text" data-fi="Puhelin:" data-en="Phone:" data-sv="Telefon:">Puhelin:</span>
+                            <br>+358 XX XXX XXXX
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">
+                        <span class="footer-title" data-fi="Seuraa Meitä" data-en="Follow Us" data-sv="Följ Oss">Seuraa Meitä</span>
+                    </h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    <span class="copyright-text" data-fi="© 2024 Kenya Kids Ry. Kaikki oikeudet pidätetään." data-en="© 2024 Kenya Kids Ry. All rights reserved." data-sv="© 2024 Kenya Kids Ry. Alla rättigheter förbehållna.">© 2024 Kenya Kids Ry. Kaikki oikeudet pidätetään.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Language switching functionality
+        let currentLanguage = 'fi';
+
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update language buttons
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update all text elements
+            document.querySelectorAll('[data-fi]').forEach(element => {
+                if (element.hasAttribute(`data-${lang}`)) {
+                    element.textContent = element.getAttribute(`data-${lang}`);
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial language
+            switchLanguage('fi');
+            
+            // Add loading animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease-in-out';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9918e0e5970e73b4',t:'MTc2MDk2NzExOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
